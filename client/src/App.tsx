@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "./components/useTheme";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import ContactMe from "./pages/ContactMe";
 import Loader from "./components/Loader";
 
