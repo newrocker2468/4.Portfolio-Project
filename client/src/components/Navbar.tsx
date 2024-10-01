@@ -32,7 +32,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
     },
   ];
   return (
-    <nav className={`flex justify-around items-center mt-5 mb-5 `}>
+    <nav className={`flex justify-around items-center mt-5 mb-5 z-50`}>
       <div className='flex items-center gap-[1rem] ml-[-7rem] '>
         <div className='flex justify-between flex-row items-center m-[0.5rem] bg-black'></div>
         <div className='flex justify-center flex-col'>
@@ -87,6 +87,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
             viewBox='0 0 20 20'
             fill='currentColor'
             stroke='none'
+            className="darkmodesvg"
           >
             <mask id='moon-mask'>
               <rect x='0' y='0' width='20' height='20' fill='white'></rect>

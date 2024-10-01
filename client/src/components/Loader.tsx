@@ -1,18 +1,21 @@
-// src/components/Loader.tsx
-import React from "react";
+import React, { forwardRef } from "react";
 import "../styles/Loader.css"; // Optional: for additional styling
+
 interface LoaderProps {
-    className?: string;
+  className?: string;
+
 }
-const Loader:React.FC<LoaderProps>  = ({className}) => {
+
+const Loader = forwardRef<HTMLDivElement, LoaderProps>(({ className }, ref) => {
   return (
-    /* From Uiverse.io by aryamitra06 */
-    <div className={`loader ${className}`}>
-      <span className='bar'></span>
-      <span className='bar'></span>
-      <span className='bar'></span>
+    <div ref={ref} className={`loader-bg ${className}`}>
+      <div className="loader">
+        <span className='bar'></span>
+        <span className='bar'></span>
+        <span className='bar'></span>
+      </div>
     </div>
   );
-};
+});
 
 export default Loader;
