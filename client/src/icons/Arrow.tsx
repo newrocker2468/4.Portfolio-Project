@@ -10,7 +10,7 @@ type ArrowProps = {
 const Arrow: React.FC<ArrowProps> = ({ isDark, w, h, style }) => (
   <div className={`${style}`}>
     <svg
-      fill={isDark ? "#fff" : "#000"}
+      fill={isDark ? "#000" : "#fff"}
       height={`${h}`}
       width={`${w}`}
       version='1.1'

@@ -7,8 +7,9 @@ interface LoaderProps {
 }
 
 const Loader = forwardRef<HTMLDivElement, LoaderProps>(({ className }, ref) => {
+
   return (
-    <div ref={ref} className={`loader-bg ${className}`}>
+    <div ref={ref} className={`loader-bg  ${className}`}>
       <div className="loader">
         <span className='bar'></span>
         <span className='bar'></span>

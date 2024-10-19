@@ -16,6 +16,10 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
 
   const links = [
     {
+      name: "Home",
+      Route: "/",
+    },
+    {
       name: "Projects",
       Route: "/projects",
     },
@@ -35,7 +39,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
   return (
     <nav className={`flex justify-around items-center mt-5 mb-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
-        <div className='flex justify-between flex-row items-center m-[0.5rem] border-0 border-b-gray-500 border-solid'>
+        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer'>
           {isDark ? (
             <img
               src='sun.svg'
@@ -76,7 +80,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
         </ul>
       </div>
 
-      <div className='flex justify-around items-center gap-1'>
+      <div className='flex justify-around items-center gap-2'>
         {/* <label className='switch'>
             <input
               type='checkbox'
@@ -89,7 +93,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
 
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
-          className='flex justify-center items-center'
+          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-white '
         >
           {isDark ? (
             <img
@@ -101,7 +105,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
             />
           ) : (
             <img
-              src='coffee_light1.svg'
+              src='coffee_light.svg'
               alt=''
               width={30}
               height={30}
@@ -110,18 +114,43 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
           )}
         </Link>
         <Link
-          to='/'
-          className='link border-2 border-black rounded-2xl
- flex justify-center items-center px-3 py-1  dark:border-white'
+          to='https://buymeacoffee.com/jaskaransingh'
+          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-white '
+        >
+          {isDark ? (
+            <img
+              src='linkedin_light.svg'
+              alt=''
+              width={27}
+              height={30}
+              className=''
+            />
+          ) : (
+            <img
+              src='linkedin_dark.svg'
+              alt=''
+              width={27}
+              height={30}
+              className=''
+            />
+          )}
+        </Link>
+        <Link
+          to='https://github.com/newrocker2468'
+          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-white'
+        >
+          {isDark ? (
+            <img src='github_dark.svg' alt='' width={30} height={30} />
+          ) : (
+            <img src='github_light.svg' alt='' width={30} height={30} />
+          )}
+        </Link>
+        <Link
+          to=''
+          className='link bg-black dark:bg-grey dark:text-black text-white dark:hover:bg-white  rounded-2xl
+  flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95'
         >
           Resume <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
-          {/* <img
-            src='arrow.svg'
-            alt=''
-            width={10}
-            height={10}
-            className='arrow ml-1.5'
-          /> */}
         </Link>
       </div>
     </nav>

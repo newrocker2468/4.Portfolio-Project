@@ -6,11 +6,12 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
 import ContactMe from "./pages/ContactMe";
-
+import Loader from "./components/Loader";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const { theme, toggleTheme } = useTheme();
+
 const loaderRef = useRef<HTMLDivElement | null>(null);
 
   const ToggleDarkMode = () => {
@@ -47,7 +48,6 @@ const loaderRef = useRef<HTMLDivElement | null>(null);
   return (
     <>
       <NavBar theme={theme} ToggleDarkMode={ToggleDarkMode} />
-      {/* {loading && <Loader ref={loaderRef} />} */}
       <Routes>
         <Route path='/' element={<Home ref={loaderRef} loading={loading}/>} />
         <Route path='/contactme' element={<ContactMe />} />
