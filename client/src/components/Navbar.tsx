@@ -1,6 +1,7 @@
 import "../styles/NavBar.css";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import Arrow from "../icons/Arrow";
 interface NavBarProps {
   theme: string;
   ToggleDarkMode: () => void;
@@ -33,8 +34,28 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
   ];
   return (
     <nav className={`flex justify-around items-center mt-5 mb-5 z-50`}>
-      <div className='flex items-center gap-[1rem] ml-[-7rem] '>
-        <div className='flex justify-between flex-row items-center m-[0.5rem] bg-black'></div>
+      <div className='flex items-center gap-[1rem]  '>
+        <div className='flex justify-between flex-row items-center m-[0.5rem] border-0 border-b-gray-500 border-solid'>
+          {isDark ? (
+            <img
+              src='sun.svg'
+              alt=''
+              width={30}
+              height={30}
+              className='sun'
+              onClick={ToggleDarkMode}
+            />
+          ) : (
+            <img
+              src='moon.svg'
+              alt=''
+              width={30}
+              height={30}
+              className='moon'
+              onClick={ToggleDarkMode}
+            />
+          )}
+        </div>
         <div className='flex justify-center flex-col'>
           <span className='font-medium'>
             <Link to='/'>Jaskaran Singh</Link>
@@ -55,7 +76,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
         </ul>
       </div>
 
-      <div>
+      <div className='flex justify-around items-center gap-1'>
         {/* <label className='switch'>
             <input
               type='checkbox'
@@ -66,80 +87,42 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
             <span className='slider'></span>
           </label> */}
 
-        <label
-          htmlFor='themeToggle'
-          className='themeToggle st-sunMoonThemeToggleBtn'
-          style={{
-            color: isDark ? "#fff" : "#000",
-          }}
+        <Link
+          to='https://buymeacoffee.com/jaskaransingh'
+          className='flex justify-center items-center'
         >
-          <input
-            type='checkbox'
-            id='themeToggle'
-            className='themeToggleInput'
-            checked={isDark}
-            onChange={ToggleDarkMode}
-            name='darkmode'
-          />
-          <svg
-            width='35'
-            height='35'
-            viewBox='0 0 20 20'
-            fill='currentColor'
-            stroke='none'
-            className="darkmodesvg"
-          >
-            <mask id='moon-mask'>
-              <rect x='0' y='0' width='20' height='20' fill='white'></rect>
-              <circle cx='11' cy='3' r='8' fill='black'></circle>
-            </mask>
-            <circle
-              className='sunMoon'
-              cx='10'
-              cy='10'
-              r='8'
-              mask='url(#moon-mask)'
-            ></circle>
-            <g>
-              <circle
-                className='sunRay sunRay1'
-                cx='18'
-                cy='10'
-                r='1.5'
-              ></circle>
-              <circle
-                className='sunRay sunRay2'
-                cx='14'
-                cy='16.928'
-                r='1.5'
-              ></circle>
-              <circle
-                className='sunRay sunRay3'
-                cx='6'
-                cy='16.928'
-                r='1.5'
-              ></circle>
-              <circle
-                className='sunRay sunRay4'
-                cx='2'
-                cy='10'
-                r='1.5'
-              ></circle>
-              <circle
-                className='sunRay sunRay5'
-                cx='6'
-                cy='3.1718'
-                r='1.5'
-              ></circle>
-              <circle
-                className='sunRay sunRay6'
-                cx='14'
-                cy='3.1718'
-                r='1.5'
-              ></circle>
-            </g>
-          </svg>
-        </label>
+          {isDark ? (
+            <img
+              src='coffee_dark.svg'
+              alt=''
+              width={30}
+              height={30}
+              className=''
+            />
+          ) : (
+            <img
+              src='coffee_light1.svg'
+              alt=''
+              width={30}
+              height={30}
+              className=''
+            />
+          )}
+        </Link>
+        <Link
+          to='/'
+          className='link border-2 border-black rounded-2xl
+ flex justify-center items-center px-3 py-1  dark:border-white'
+        >
+          Resume <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
+          {/* <img
+            src='arrow.svg'
+            alt=''
+            width={10}
+            height={10}
+            className='arrow ml-1.5'
+          /> */}
+        </Link>
       </div>
     </nav>
   );
