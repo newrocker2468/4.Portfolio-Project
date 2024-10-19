@@ -39,7 +39,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
   return (
     <nav className={`flex justify-around items-center mt-5 mb-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
-        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer'>
+        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white'>
           {isDark ? (
             <img
               src='sun.svg'
@@ -93,7 +93,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
 
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
-          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-white '
+          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white '
         >
           {isDark ? (
             <img
@@ -115,7 +115,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
         </Link>
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
-          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-white '
+          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
         >
           {isDark ? (
             <img
@@ -137,7 +137,7 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
         </Link>
         <Link
           to='https://github.com/newrocker2468'
-          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-white'
+          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
         >
           {isDark ? (
             <img src='github_dark.svg' alt='' width={30} height={30} />

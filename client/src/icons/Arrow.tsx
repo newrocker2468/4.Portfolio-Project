@@ -19,12 +19,12 @@ const Arrow: React.FC<ArrowProps> = ({ isDark, w, h, style }) => (
       viewBox='0 0 242.133 242.133'
       transform='rotate(-90)'
     >
-      <g id='SVGRepo_bgCarrier' stroke-width='0' />
+      <g id='SVGRepo_bgCarrier' strokeWidth='0' />
 
       <g
         id='SVGRepo_tracerCarrier'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
 
       <g id='SVGRepo_iconCarrier'>

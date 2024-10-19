@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
 import ContactMe from "./pages/ContactMe";
-import Loader from "./components/Loader";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,13 +19,13 @@ const loaderRef = useRef<HTMLDivElement | null>(null);
 
   document.documentElement.style.minHeight = "100dvh";
 
-  useEffect(() => {
-    console.log(theme);
-  }, [theme]);
+  // useEffect(() => {
+  //   console.log(theme);
+  // }, [theme]);
 
   useEffect(() => {
     const handleLoad = () => {
-      console.log(loaderRef.current);
+      // console.log(loaderRef.current);
       setTimeout(() => {
         if (loaderRef.current) {
           loaderRef.current.style.transition = "opacity 0.5s ease-out";
