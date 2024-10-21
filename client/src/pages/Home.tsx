@@ -1,4 +1,4 @@
-import React from "react";
+import  { useEffect } from "react";
 import { forwardRef } from "react";
 import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
@@ -44,6 +44,11 @@ const quote = quotes[Math.floor(Math.random() * quotes.length)];
 const Home = forwardRef<HTMLDivElement, HomeProps>(
   ({ className, loading }, ref) => {
     const { theme } = useTheme();
+    useEffect(() => {
+  console.log("Home component mounted");
+  console.log(loading)
+  console.log(theme)
+}, [loading,theme]);
     return (
       <>
         {loading && (
@@ -54,11 +59,14 @@ const Home = forwardRef<HTMLDivElement, HomeProps>(
         )}
         <main className={`dark:text-white ${className}`}>
           <div className='flex items-center justify-center m-2 text-center text-3xl text-shadow-custom'>
-            <span className="mx-80">
+            <span className='mx-80'>
               {" "}
               {quote.quote} - {quote.author}
             </span>
           </div>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste accusantium corrupti maxime, incidunt porro explicabo adipisci, quaerat dolor nisi quo at aut! Id quia deleniti iusto quisquam porro non debitis?
+      </p>
         </main>
       </>
     );

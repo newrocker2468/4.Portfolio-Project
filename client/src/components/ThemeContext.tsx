@@ -1,48 +1,67 @@
 import React, { createContext, useState, useEffect } from "react";
 
-
 interface ThemeContextType {
-  theme: "light" | "dark";
+  theme: "light" | "dark" | "system";
   toggleTheme: () => void;
 }
 
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-// export function useTheme() {
-//   const context = useContext(ThemeContext);
-//   if (!context) {
-//     throw new Error("useTheme must be used within a ThemeProvider");
-//   }
-//   return context;
-// }
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    // Check localStorage for saved theme
+  const getInitialTheme = () => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? (savedTheme as "light" | "dark") : "dark";
-  });
+    if (savedTheme) {
+      return savedTheme as "light" | "dark" | "system";
+    }
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    return prefersDark ? "dark" : "light";
+  };
+
+  const [theme, setTheme] = useState<"light" | "dark" | "system">(getInitialTheme);
 
   useEffect(() => {
-    // Apply theme to html and body elements
     const className = "dark";
     const element = document.documentElement;
-    // const body = document.body;
 
-    if (theme === "dark") {
-      element.classList.add(className);
-      //   body.classList.add(className);
-    } else {
-      element.classList.remove(className);
-    //   body.classList.remove(className);
-    }
+    const applyTheme = (theme: "light" | "dark" | "system") => {
+      if (
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        element.classList.add(className);
+      } else {
+        element.classList.remove(className);
+      }
+    };
 
-    // Save theme to localStorage
-    localStorage.setItem("theme", theme);
+    applyTheme(theme);
+
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      if (theme === "system") {
+        applyTheme(e.matches ? "dark" : "light");
+      }
+    };
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prevTheme) => {
+      const newTheme =
+        prevTheme === "light" ? "dark": prevTheme === "dark"? "system": "light";
+      localStorage.setItem("theme", newTheme);
+      return newTheme;
+    });
   };
 
   return (

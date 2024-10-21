@@ -25,7 +25,7 @@ const loaderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleLoad = () => {
-      // console.log(loaderRef.current);
+      console.log(loaderRef.current);
       setTimeout(() => {
         if (loaderRef.current) {
           loaderRef.current.style.transition = "opacity 0.5s ease-out";

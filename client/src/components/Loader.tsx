@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import  { forwardRef } from "react";
 import "../styles/Loader.css"; // Optional: for additional styling
 
 interface LoaderProps {
