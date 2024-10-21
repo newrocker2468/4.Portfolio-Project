@@ -8,7 +8,7 @@ export function useTheme() {
 // const ans =  window.matchMedia("(prefers-color-scheme: dark)").matches;
 // context.theme = ans ? "dark" :"light";
 // } 
-console.log(context)
+// console.log(context)
 
   if (!context) {
      throw new Error("useTheme must be used within a ThemeProvider");
