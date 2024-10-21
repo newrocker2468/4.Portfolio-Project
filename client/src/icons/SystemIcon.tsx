@@ -20,7 +20,7 @@ return (
     >
       <g
         transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)'
-        fill={effectiveTheme === "dark" ? "#ffff" : "#0000"}
+        fill={effectiveTheme === "dark" ? "#ffff" : "#000000"}
         stroke='none'
       >
         <path
