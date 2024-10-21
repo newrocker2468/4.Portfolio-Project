@@ -6,7 +6,24 @@ interface NavBarProps {
   theme: string;
   ToggleDarkMode: () => void;
 }
+
 const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
+  
+const onButtonClick = async (event: { preventDefault: () => void; }) => {
+  event.preventDefault(); // Prevent the default link behavior
+  try {
+    const response = await fetch("Resume.pdf");
+    const blob = await response.blob();
+    const fileURL = window.URL.createObjectURL(blob);
+    const alink = document.createElement("a");
+    alink.href = fileURL;
+    alink.download = "Resume.pdf"; // Set the desired filename here
+    alink.click();
+  } catch (error) {
+    console.error("Error fetching the PDF file:", error);
+  }
+};
+
   let isDark = false;
   if (theme == "dark") {
     isDark = true;
@@ -145,13 +162,14 @@ const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
             <img src='github_light.svg' alt='' width={30} height={30} />
           )}
         </Link>
-        <Link
-          to=''
+        <a
+  
           className='link bg-black dark:bg-grey dark:text-black text-white dark:hover:bg-white  rounded-2xl
   flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95'
+          onClick={onButtonClick}
         >
           Resume <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
-        </Link>
+        </a>
       </div>
     </nav>
   );
