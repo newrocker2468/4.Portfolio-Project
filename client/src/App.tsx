@@ -9,13 +9,11 @@ import ContactMe from "./pages/ContactMe";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, effectiveTheme } = useTheme();
 
 const loaderRef = useRef<HTMLDivElement | null>(null);
 
-  const ToggleDarkMode = () => {
-    toggleTheme();
-  };
+
 
   document.documentElement.style.minHeight = "100dvh";
 
@@ -25,7 +23,7 @@ const loaderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleLoad = () => {
-      console.log(loaderRef.current);
+      // console.log(loaderRef.current);
       setTimeout(() => {
         if (loaderRef.current) {
           loaderRef.current.style.transition = "opacity 0.5s ease-out";
@@ -46,9 +44,15 @@ const loaderRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
-      <NavBar theme={theme} ToggleDarkMode={ToggleDarkMode} />
+      <NavBar
+        theme={theme}
+        toggleTheme={() => {
+          toggleTheme();
+        }}
+        effectiveTheme={effectiveTheme}
+      />
       <Routes>
-        <Route path='/' element={<Home ref={loaderRef} loading={loading}/>} />
+        <Route path='/' element={<Home ref={loaderRef} loading={loading} />} />
         <Route path='/contactme' element={<ContactMe />} />
         <Route path='/qualifications' element={<ContactMe />} />
         <Route path='/skills' element={<ContactMe />} />

@@ -2,30 +2,31 @@ import "../styles/NavBar.css";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../icons/Arrow";
+import SystemIcon from "../icons/SystemIcon";
 interface NavBarProps {
   theme: string;
-  ToggleDarkMode: () => void;
+  effectiveTheme: string;
+  toggleTheme: () => void;
 }
 
-const NavBar: FC<NavBarProps> = ({ theme, ToggleDarkMode }) => {
-  
-const onButtonClick = async (event: { preventDefault: () => void; }) => {
-  event.preventDefault(); // Prevent the default link behavior
-  try {
-    const response = await fetch("Resume.pdf");
-    const blob = await response.blob();
-    const fileURL = window.URL.createObjectURL(blob);
-    const alink = document.createElement("a");
-    alink.href = fileURL;
-    alink.download = "Resume.pdf"; // Set the desired filename here
-    alink.click();
-  } catch (error) {
-    console.error("Error fetching the PDF file:", error);
-  }
-};
+const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
+  const onButtonClick = async (event: { preventDefault: () => void }) => {
+    event.preventDefault(); // Prevent the default link behavior
+    try {
+      const response = await fetch("Resume.pdf");
+      const blob = await response.blob();
+      const fileURL = window.URL.createObjectURL(blob);
+      const alink = document.createElement("a");
+      alink.href = fileURL;
+      alink.download = "Resume.pdf"; // Set the desired filename here
+      alink.click();
+    } catch (error) {
+      console.error("Error fetching the PDF file:", error);
+    }
+  };
 
   let isDark = false;
-  if (theme == "dark") {
+  if (effectiveTheme == "dark") {
     isDark = true;
   } else {
     isDark = false;
@@ -57,14 +58,19 @@ const onButtonClick = async (event: { preventDefault: () => void; }) => {
     <nav className={`flex justify-around items-center mt-5 mb-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
         <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white'>
-          {isDark ? (
+          {theme === "system" ? (
+            <SystemIcon
+              effectiveTheme={effectiveTheme}
+              toggleTheme={toggleTheme}
+            />
+          ) : isDark ? (
             <img
               src='sun.svg'
               alt=''
               width={30}
               height={30}
               className='sun'
-              onClick={ToggleDarkMode}
+              onClick={toggleTheme}
             />
           ) : (
             <img
@@ -73,7 +79,7 @@ const onButtonClick = async (event: { preventDefault: () => void; }) => {
               width={30}
               height={30}
               className='moon'
-              onClick={ToggleDarkMode}
+              onClick={toggleTheme}
             />
           )}
         </div>
@@ -163,7 +169,6 @@ const onButtonClick = async (event: { preventDefault: () => void; }) => {
           )}
         </Link>
         <a
-  
           className='link bg-black dark:bg-grey dark:text-black text-white dark:hover:bg-white  rounded-2xl
   flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95'
           onClick={onButtonClick}

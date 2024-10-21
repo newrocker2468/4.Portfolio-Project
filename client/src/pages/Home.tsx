@@ -1,4 +1,4 @@
-import  { useEffect } from "react";
+// import  { useEffect } from "react";
 import { forwardRef } from "react";
 import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
@@ -43,18 +43,24 @@ const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
 const Home = forwardRef<HTMLDivElement, HomeProps>(
   ({ className, loading }, ref) => {
-    const { theme } = useTheme();
-    useEffect(() => {
-  console.log("Home component mounted");
-  console.log(loading)
-  console.log(theme)
-}, [loading,theme]);
+    const { effectiveTheme } = useTheme();
+   
+//     useEffect(() => {
+//   console.log("Home component mounted");
+//   console.log(loading)
+
+// }, [loading,theme]);
+    // useEffect(() => {
+    //   // console.log("Home component mounted");
+    //   console.log(document.documentElement.classList);
+    // }, [ theme]);
+
     return (
       <>
         {loading && (
           <Loader
             ref={ref}
-            className={theme === "dark" ? "bg-black" : "bg-white"}
+            className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
           />
         )}
         <main className={`dark:text-white ${className}`}>
@@ -64,9 +70,12 @@ const Home = forwardRef<HTMLDivElement, HomeProps>(
               {quote.quote} - {quote.author}
             </span>
           </div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste accusantium corrupti maxime, incidunt porro explicabo adipisci, quaerat dolor nisi quo at aut! Id quia deleniti iusto quisquam porro non debitis?
-      </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
+            accusantium corrupti maxime, incidunt porro explicabo adipisci,
+            quaerat dolor nisi quo at aut! Id quia deleniti iusto quisquam porro
+            non debitis?
+          </p>
         </main>
       </>
     );
