@@ -9,7 +9,12 @@ module.exports = {
       },
       colors: {
         grey: "#e8e8e8",
+        paragrey: "#a7a7a7",
         lightblack: "#424242",
+        lightyellow: "#393015",
+        darkyellow: "#ffc400",
+        actgrey: "#1f2020",
+        completed: "#6ee7b7",
         darkwhite: "#e3e3e3",
       },
     },

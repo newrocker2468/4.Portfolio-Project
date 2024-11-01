@@ -36,10 +36,9 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   }
 
   const links = [
-
     {
       name: "Projects",
-      Route: "/projects",
+      Route: "/Projects",
     },
     {
       name: "Qualifications",
@@ -135,7 +134,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </Link>
         <a
           className='link bg-black dark:bg-grey dark:text-black text-white dark:hover:bg-white  rounded-2xl
-  flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95'
+  flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95 cursor-pointer'
           onClick={onButtonClick}
         >
           Resume <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
