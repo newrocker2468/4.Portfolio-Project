@@ -6,18 +6,12 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
 import ContactMe from "./pages/ContactMe";
-import { Scrollbar } from "smooth-scrollbar-react";
-import type { Scrollbar as BaseScrollbar } from "smooth-scrollbar/scrollbar";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const { theme, toggleTheme, effectiveTheme } = useTheme();
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const scrollbar = useRef<BaseScrollbar | null>(null);
-
-  useEffect(() => {
-    console.log(scrollbar.current);
-  }, []);
+ 
   useEffect(() => {
     const handleLoad = () => {
       setTimeout(() => {
@@ -39,15 +33,7 @@ function App() {
   return (
     <>
       {" "}
-      <Scrollbar
-        damping={0.1}
-        thumbMinSize={10}
-        renderByPixels={true}
-        alwaysShowTracks={true}
-        continuousScrolling={true}
-        // plugins={{ overscroll: { effect: "bounce" } }}
-        ref={scrollbar}
-      >
+  
         <div id='scroll-container' className='app-content'>
           <NavBar
             theme={theme}
@@ -68,7 +54,7 @@ function App() {
             </Routes>
           </div>
         </div>
-      </Scrollbar>
+
     </>
   );
 }

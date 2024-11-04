@@ -1,5 +1,5 @@
 import  { FC, useState } from "react";
-
+import ProjectStatus from "./ProjectStatus";
 interface Project {
   name: string;
   status: string;
@@ -34,9 +34,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ projects }) => {
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
         >
-          <span className='absolute left-7 top-5 bg-darkyellow dark:bg-lightyellow bg-opacity-90 px-2 py-1 rounded-2xl dark:text-darkyellow text-xs font-semibold'>
-            {project?.status}
-          </span>
+    <ProjectStatus status={project?.status} />
           <br />
           <div className='m-2'> {project.name}</div>
           <p className='text-paragrey m-2'>{project.description}</p>
