@@ -2,7 +2,8 @@
 import { forwardRef } from "react";
 import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
-import ProjectCard from "../components/ProjectCard";
+import ExtentedView from "../components/ExtendedView";
+import CompactView from "../components/CompactView";
 
 
 interface HomeProps {
@@ -100,23 +101,25 @@ const Home = forwardRef<HTMLDivElement, HomeProps>(
             className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
           />
         )}
-    
-          <main className={`dark:text-white ${className}`}>
-            <div className='flex items-center justify-center m-5 text-center text-5xl text-shadow-custom'>
-              <span className='mx-80'>
-                {" "}
-                {quote.quote} - {quote.author}
-              </span>
-            </div>
 
-            <div className='text-center my-[10rem] '>
-              <h1 className='text-xl'>Projects</h1>
-              <div className='flex items-center justify-center flex-col'>
-                <ProjectCard projects={project} />
-              </div>
+        <main className={`dark:text-white ${className}`}>
+          <div className='flex items-center justify-center m-5 text-center text-5xl text-shadow-custom'>
+            <span className='mx-80'>
+              {" "}
+              {quote.quote} - {quote.author}
+            </span>
+          </div>
+
+          {/* <div className='text-center my-[10rem] '>
+            <h1 className='text-xl'>Projects</h1>
+            <div className='flex items-center justify-center flex-col'>
+              <ExtentedView projects={project} /> 
             </div>
-          </main>
-       
+          </div> */}
+          <div className="grid grid-cols-3 gap-10">
+            <CompactView projects={project} />
+          </div>
+        </main>
       </>
     );
   }

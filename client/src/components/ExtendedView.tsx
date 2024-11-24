@@ -10,11 +10,11 @@ interface Project {
   website: string;
 }
 
-interface ProjectCardProps {
+interface ExtentedViewProps {
   projects: Project[];
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({ projects }) => {
+const ExtentedView: FC<ExtentedViewProps> = ({ projects }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleMouseEnter = (index: number) => {
@@ -34,7 +34,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ projects }) => {
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
         >
-    <ProjectStatus status={project?.status} />
+          <ProjectStatus status={project?.status} />
           <br />
           <div className='m-2'> {project.name}</div>
           <p className='text-paragrey m-2'>{project.description}</p>
@@ -53,4 +53,4 @@ const ProjectCard: FC<ProjectCardProps> = ({ projects }) => {
   );
 };
 
-export default ProjectCard;
+export default ExtentedView;
