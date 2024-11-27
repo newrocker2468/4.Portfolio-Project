@@ -36,7 +36,7 @@ const ExtentedView: FC<ExtentedViewProps> = ({ projects }) => {
         >
           <ProjectStatus status={project?.status} />
           <br />
-          <div className='m-2'> {project.name}</div>
+          <div className='m-2 text-center text-xl'> {project.name}</div>
           <p className='text-paragrey m-2'>{project.description}</p>
           <div className='flex items-center justify-center'>
             <img

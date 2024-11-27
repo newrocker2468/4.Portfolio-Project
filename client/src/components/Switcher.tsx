@@ -12,7 +12,7 @@ const Switcher:FC<SwitcherProps> = ({View,SetView}) => {
    
     return (
     
-        <div className='rounded-xl w-min flex'>
+        <div className='rounded-xl gap-1 w-min flex'>
           <GridViewIcon View={View} SetView={SetView} />
           <ListViewIcon View={View} SetView={SetView} />
         </div>

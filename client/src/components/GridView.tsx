@@ -1,4 +1,6 @@
 import { FC } from "react";
+import ProjectStatus from "./ProjectStatus";
+import TrimmerFunction from '../middlewares/TrimmerFunction';
 
 interface Project {
   name: string;
@@ -24,11 +26,9 @@ const CompactView: FC<CompactViewProps> = ({ projects }) => {
         >
           <div className='p-4'>
             <div className='flex justify-start mb-2'>
-              <span className='bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm font-semibold'>
-                {project.status}
-              </span>
+            <ProjectStatus status={project?.status} />
             </div>
-            <h2 className='text-xl font-bold mb-2 text-gray-900 dark:text-gray-100'>
+            <h2 className='text-xl text-center  mb-2 text-gray-900 dark:text-gray-100'>
               {project.name}
             </h2>
             <img
@@ -37,7 +37,7 @@ const CompactView: FC<CompactViewProps> = ({ projects }) => {
               className='w-full h-48 object-cover rounded-md mb-4'
             />
             <p className='text-gray-700 dark:text-gray-300 mb-4'>
-              {project.description}
+              {TrimmerFunction(project.description)}
             </p>
             <div className='flex flex-wrap justify-start'>
               {project.technologies.map((tech, index) => (
