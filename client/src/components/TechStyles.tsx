@@ -1,11 +1,15 @@
 // techStyles.ts
 import BoostrapIcon from '../icons/BootstrapIcon';
+import CloudinaryIcon from '../icons/CloudinaryIcon';
+import EjsIcon from '../icons/EjsIcon';
 import ExpressjsIcon from '../icons/ExpressjsIcon';
 import JwtIcon from '../icons/JwtIcon';
+import MapboxIcon from '../icons/MapboxIcon';
 import MongodbIcon from '../icons/MongodbIcon';
 import NodejsIcon from '../icons/NodejsIcon';
 import PassportjsIcon from '../icons/PassportjsIcon';
 import ReactIcon from '../icons/ReactIcon';
+import ShadcnIcon from '../icons/ShadcnIcon';
 import TailwindCss from '../icons/TailwindCss';
 interface TechStyle {
     names: string[];
@@ -68,6 +72,30 @@ const techStyles: { [key: string]: TechStyle } = {
         bgColor: 'bg-bootstrapbg dark:bg-bootstrapbgdark',
         textColor: 'text-bootstraptext dark:text-bootstraptextdark',
         svg:<BoostrapIcon/>,
+    },
+    Ejs:{
+        names:["ejs"],
+        bgColor: 'bg-ejsbg dark:bg-ejsbgdark',
+        textColor: 'text-ejstext dark:text-ejstextdark',
+        svg:<EjsIcon/>,
+    },
+    Mapbox:{
+        names:["mapbox"],
+        bgColor: 'bg-mapboxbg dark:bg-mapboxbgdark',
+        textColor: 'text-mapboxtext dark:text-mapboxtextdark',
+        svg:<MapboxIcon/>,
+    },
+    Cloudinary:{
+        names:["cloudinary"],
+        bgColor: 'bg-cloudinarybg dark:bg-cloudinarybgdark',
+        textColor: 'text-cloudinarytext dark:text-cloudinarytextdark',
+        svg: <CloudinaryIcon/>,
+    },
+    Shadcn:{
+        names:["shadcn"],
+        bgColor: 'bg-shadcnbg dark:bg-shadcnbgdark',
+        textColor: 'text-shadcncolor dark:text-shadcncolordark',
+        svg:<ShadcnIcon/>,
     }
 };
 

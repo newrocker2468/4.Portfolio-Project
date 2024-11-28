@@ -39,6 +39,8 @@ const project = [
       "MongoDB",
       "Passport JS",
       "Node Mailer",
+      "Shadcn",
+      "Next UI",
     ],
     github: "https://github.com/newrocker2468/CoreNexUI",
     website: "https://corenexui.jaskaran.dev/home",
