@@ -15,6 +15,9 @@ const ListViewIcon: FC<ListViewIconProps> = ({ View, SetView }) => {
   
 
   return (
+    <div className="relative group">
+
+   
     <div
       className={`p-3 rounded-lg cursor-pointer transition-colors duration-300 ${
         View === "list"
@@ -24,8 +27,8 @@ const ListViewIcon: FC<ListViewIconProps> = ({ View, SetView }) => {
       onClick={handleClick}
     >
       <svg
-        width='24'
-        height='24'
+        width='15'
+        height='15'
         viewBox='0 0 18 18'
         xmlns='http://www.w3.org/2000/svg'
       >
@@ -38,6 +41,11 @@ const ListViewIcon: FC<ListViewIconProps> = ({ View, SetView }) => {
           <rect width='18' height='4' y='14' rx='2' />
         </g>
       </svg>
+
+    </div>
+      <span className="text-xs absolute transform left-[-0.6rem] z-10 bg-black text-white rounded-lg px-2 py-1 hidden group-hover:block whitespace-nowrap">
+        List View
+      </span>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const ProjectStatus: FC<ProjectStatusProps> = ({ status }) => {
 
   const statusClasses: { [key: string]: string[] } = {
     "workinprogress!": ["bg-darkyellow", "dark:text-darkyellow", "dark:bg-lightyellow"], 
-    "completed!": ["bg-darkgreen1", "text-completed"],
+    "completed!": ["dark:bg-darkgreen1", "dark:text-completed","bg-completed","text-black"],
     "inactive!": ["bg-red", "text-white", "border-red"],
   }; 
   const normalizeStatus = (status: string): string => {
