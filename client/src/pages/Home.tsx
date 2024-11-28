@@ -19,7 +19,7 @@ const project = [
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A consequatur ad, omnis repellat quos dolorum corrupti cupiditate nisi ratione tenetur neque velit illum doloribus veniam excepturi earum dolorem in accusamus.",
     image: "Corenexui (2).png",
-    technologies: ["React", "Tailwind CSS"],
+    technologies: ["React JS", "Tailwind CSS"],
     github: "Testing.com",
     website: "Testing.com",
   },
@@ -38,7 +38,7 @@ const project = [
       "Express Js",
       "MongoDB",
       "Passport JS",
-      "NodeMailer",
+      "Node Mailer",
     ],
     github: "https://github.com/newrocker2468/CoreNexUI",
     website: "https://corenexui.jaskaran.dev/home",

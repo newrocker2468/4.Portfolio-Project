@@ -1,6 +1,7 @@
 import { FC } from "react";
 import ProjectStatus from "./ProjectStatus";
 import TrimmerFunction from '../middlewares/TrimmerFunction';
+import TechCard from "./TechCard";
 
 interface Project {
   name: string;
@@ -26,7 +27,7 @@ const CompactView: FC<CompactViewProps> = ({ projects }) => {
         >
           <div className='p-4'>
             <div className='flex justify-start mb-2'>
-            <ProjectStatus status={project?.status} />
+              <ProjectStatus status={project?.status} />
             </div>
             <h2 className='text-xl text-center  mb-2 text-gray-900 dark:text-gray-100'>
               {project.name}
@@ -43,11 +44,14 @@ const CompactView: FC<CompactViewProps> = ({ projects }) => {
               {project.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className='bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-2 py-1 rounded-full text-sm font-medium mr-2 mb-2'
-                >
-                  {tech}
+                >        
+                <TechCard techName={tech} />
+
+               
                 </span>
               ))}
+              {/* <TechCard techName='Tailwind Css' />
+              <TechCard techName='React Js' /> */}
             </div>
             <div className='mt-4 flex justify-between items-center'>
               <a
