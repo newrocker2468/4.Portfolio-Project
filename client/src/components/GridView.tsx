@@ -22,7 +22,7 @@ const CompactView: FC<CompactViewProps> = ({ projects }) => {
       {projects.map((project, index) => (
         <div
           key={index}
-          className='dark:bg-actgrey bg-white  rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer'
+          className='dark:bg-actgrey bg-white  rounded-xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer'
         >
           <div className='p-4'>
             <div className='flex justify-start mb-2'>

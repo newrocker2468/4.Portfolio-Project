@@ -30,7 +30,7 @@ const ExtentedView: FC<ExtentedViewProps> = ({ projects }) => {
       {projects.map((project, index) => (
         <div
           key={index}
-          className='dark:bg-actgrey bg-white border border-paragrey dark:border-black rounded-2xl sm:w-[70%] h-auto p-5 m-5 mb-[5rem] relative overflow-hidden cursor-pointer '
+          className='dark:bg-actgrey bg-white  shadow-2xl border-paragrey dark:border-black rounded-2xl sm:w-[70%] h-auto p-5 m-5 mb-[5rem] relative overflow-hidden cursor-pointer '
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
         >
