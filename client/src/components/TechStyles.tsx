@@ -1,4 +1,5 @@
 // techStyles.ts
+import BoostrapIcon from '../icons/BootstrapIcon';
 import ExpressjsIcon from '../icons/ExpressjsIcon';
 import JwtIcon from '../icons/JwtIcon';
 import MongodbIcon from '../icons/MongodbIcon';
@@ -61,6 +62,12 @@ const techStyles: { [key: string]: TechStyle } = {
         bgColor: 'bg-passportjsbg dark:bg-black',
         textColor: 'text-white dark:text-white',
         svg:<PassportjsIcon/>,
+    },
+    Bootstrap:{
+        names:["bootstrap"],
+        bgColor: 'bg-bootstrapbg dark:bg-bootstrapbgdark',
+        textColor: 'text-bootstraptext dark:text-bootstraptextdark',
+        svg:<BoostrapIcon/>,
     }
 };
 

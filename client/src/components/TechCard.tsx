@@ -36,7 +36,8 @@ const TechCard: React.FC<TechCardProps> = ({ techName }) => {
     return (
         <div className={`px-2 py-1 m-1 rounded-full text-xs flex justify-between items-center font-medium ${bgColor} ${textColor} flex items-center `}>
             {/* {logo && <img src={logo} alt={`${techName} logo`} className="h-8 w-8 mr-2" />} */}
-            {svg && <svg className="h-5 w-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">{svg}</svg>}
+            {/* {svg && <svg className="h-5 w-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">{svg}</svg>} */}
+            {svg && <div className="h-5 w-5 mx-1 flex justify-center items-center">{svg}</div>}
             <span className='relative'>{techName}</span>
         </div>
     );
