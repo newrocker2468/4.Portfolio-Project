@@ -6,6 +6,7 @@ import ExpressjsIcon from '../icons/ExpressjsIcon';
 import JwtIcon from '../icons/JwtIcon';
 import MapboxIcon from '../icons/MapboxIcon';
 import MongodbIcon from '../icons/MongodbIcon';
+import NextuiIcon from '../icons/NextuiIcon';
 import NodejsIcon from '../icons/NodejsIcon';
 import PassportjsIcon from '../icons/PassportjsIcon';
 import ReactIcon from '../icons/ReactIcon';
@@ -96,6 +97,12 @@ const techStyles: { [key: string]: TechStyle } = {
         bgColor: 'bg-shadcnbg dark:bg-shadcnbgdark',
         textColor: 'text-shadcncolor dark:text-shadcncolordark',
         svg:<ShadcnIcon/>,
+    },
+    NextUI:{
+        names:["nextui","next ui","next-ui"],
+        bgColor: 'bg-nextui dark:bg-nextuibgdark',
+        textColor: 'dark:text-white',
+        svg: <NextuiIcon/>,
     }
 };
 

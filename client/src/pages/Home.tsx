@@ -59,19 +59,24 @@ const project = [
 
 
 const quotes = [
-  { quote: "Websites promote you 24/7...", author: "Paul Cookson" },
-  {
-    quote: "A designer knows he has achieved...",
-    author: "Antoine de Saint-Exupéry",
-  },
-  { quote: "Web development is the art of...", author: "Unknown" },
-  { quote: "In the world of web development...", author: "Unknown" },
-  { quote: "The best error message is the one...", author: "Thomas Fuchs" },
+  { quote: "Websites promote you 24/7: No employee will do that.", author: "Paul Cookson" },
+  { quote: "A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry" },
+  { quote: "Web development is the art of turning ideas into interactive experiences.", author: "Unknown" },
+  { quote: "In the world of web development, the only limit is your imagination.", author: "Unknown" },
+  { quote: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
   { quote: "Code is poetry.", author: "Unknown" },
-  {
-    quote: "Simplicity is the ultimate sophistication.",
-    author: "Leonardo da Vinci",
-  },
+  { quote: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+  { quote: "Design is not just what it looks like and feels like. Design is how it works.", author: "Steve Jobs" },
+  { quote: "The power of the web is in its universality. Access by everyone regardless of disability is an essential aspect.", author: "Tim Berners-Lee" },
+  { quote: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
+  { quote: "Programs must be written for people to read, and only incidentally for machines to execute.", author: "Harold Abelson" },
+  { quote: "Java is to JavaScript what car is to Carpet.", author: "Chris Heilmann" },
+  { quote: "It’s not a bug. It’s an undocumented feature.", author: "Unknown" },
+  { quote: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+  { quote: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+  { quote: "The only way to learn a new programming language is by writing programs in it.", author: "Dennis Ritchie" },
+  { quote: "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry" },
+  { quote: "Code never lies, comments sometimes do.", author: "Ron Jeffries" },
 ];
 
 const quote = quotes[Math.floor(Math.random() * quotes.length)];
