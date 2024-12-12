@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
 import ContactMe from "./pages/ContactMe";
+import Skills from "./pages/Skills";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -48,7 +49,7 @@ function App() {
               />
               <Route path='/contactme' element={<ContactMe />} />
               <Route path='/qualifications' element={<ContactMe />} />
-              <Route path='/skills' element={<ContactMe />} />
+            <Route path='/skills' element={<Skills />} />
               <Route path='/projects' element={<ContactMe />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>

@@ -6,6 +6,7 @@ import ExpressjsIcon from '../icons/ExpressjsIcon';
 import JwtIcon from '../icons/JwtIcon';
 import MapboxIcon from '../icons/MapboxIcon';
 import MongodbIcon from '../icons/MongodbIcon';
+import MysqlIcon from '../icons/MysqlIcon';
 import NextuiIcon from '../icons/NextuiIcon';
 import NodejsIcon from '../icons/NodejsIcon';
 import PassportjsIcon from '../icons/PassportjsIcon';
@@ -103,6 +104,12 @@ const techStyles: { [key: string]: TechStyle } = {
         bgColor: 'bg-nextui dark:bg-nextuibgdark',
         textColor: 'dark:text-white',
         svg: <NextuiIcon/>,
+    },
+    Mysql:{
+        names:["mysql,sql"],
+        bgColor: 'bg-mysqlbg dark:bg-mysqlbgdark',
+        textColor: 'text-mysqltext dark:text-mysqltextdark',
+        svg:<MysqlIcon/>,
     }
 };
 

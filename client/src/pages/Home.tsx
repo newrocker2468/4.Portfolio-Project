@@ -41,6 +41,8 @@ const project = [
       "Node Mailer",
       "Shadcn",
       "Next UI",
+      "Firebase",
+      "Rest API",
     ],
     github: "https://github.com/newrocker2468/CoreNexUI",
     website: "https://corenexui.jaskaran.dev/home",
@@ -51,7 +53,7 @@ const project = [
     description:
       "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
     image: "YelpCamp.png",
-    technologies: ["Node.js", "Express.js", "MongoDB", "Passport.js","Bootstrap", "EJS", "Mapbox", "Cloudinary", "Heroku" ,"Unsplash API"],
+    technologies: ["Node.js", "Express.js", "MongoDB", "Passport.js", "Bootstrap", "EJS", "Mapbox", "Cloudinary", "Heroku", "Unsplash API","mysql"],
     github: "https://github.com/yourusername/YelpCamp",
     website: "https://yelpcamp.example.com",
   },

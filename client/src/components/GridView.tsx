@@ -13,11 +13,11 @@ interface Project {
   website: string;
 }
 
-interface CompactViewProps {
+interface GridViewProps {
   projects: Project[];
 }
 
-const CompactView: FC<CompactViewProps> = ({ projects }) => {
+const GridView: FC<GridViewProps> = ({ projects }) => {
   return (
     <>
       {projects.map((project, index) => (
@@ -74,4 +74,4 @@ const CompactView: FC<CompactViewProps> = ({ projects }) => {
   );
 };
 
-export default CompactView;
+export default GridView;

@@ -121,7 +121,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
       <CoffeeIcon/>
         </Link>
         <Link
-          to='https://buymeacoffee.com/jaskaransingh'
+          to='https://www.linkedin.com/in/jaskaransc'
           className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
         >
           <LinkedinIcon />
