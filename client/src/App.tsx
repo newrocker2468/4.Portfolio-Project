@@ -33,8 +33,6 @@ function App() {
 
   return (
     <>
-      {" "}
-  
         <div id='scroll-container' className='app-content'>
           <NavBar
             theme={theme}

@@ -67,6 +67,7 @@ module.exports = {
         nextuibgdark: "#494949",
         nextui: " #f0f0f0",
         nextuibg: "#d8d8d8",
+        navglassbg: "rgba(255, 255, 255, 0.3)",
       },
     },
   },

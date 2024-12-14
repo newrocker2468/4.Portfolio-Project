@@ -54,7 +54,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     },
   ];
   return (
-    <nav className={`flex justify-around items-center mt-5 mb-5 z-50`}>
+    <nav className={`flex justify-around items-center my-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
         {theme === "system" ? "System" : theme === "light" ? "Light" : "Dark"}
         <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white'>
@@ -91,34 +91,26 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </div>
       </div>
 
-      <div>
-        <ul className='flex justify-around gap-[1rem]'>
-          {links.map((link) => {
-            return (
-              <li key={link.name}>
-                <Link to={link.Route}>{link.name}</Link>
-              </li>
-            );
-          })}
+      <div className=''>
+        
+        <ul className='flex justify-around gap-4 bg-navglassbg bg-opacity-30 backdrop-blur-md px-7 py-2 rounded-3xl'>
+          {links.map((link) => (
+            <li key={link.name} className=''>
+              <Link to={link.Route} className=''>
+                
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div className='flex justify-around items-center gap-2'>
-        {/* <label className='switch'>
-            <input
-              type='checkbox'
-              checked={isDark}
-              onChange={ToggleDarkMode}
-              name='darkmode'
-            />
-            <span className='slider'></span>
-          </label> */}
-
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
           className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white '
         >
-      <CoffeeIcon/>
+          <CoffeeIcon />
         </Link>
         <Link
           to='https://www.linkedin.com/in/jaskaransc'
