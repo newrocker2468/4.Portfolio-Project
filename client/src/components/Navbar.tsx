@@ -14,7 +14,7 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   const location = useLocation();
-  const [selectedRoute, setSelectedRoute] = useState(location.pathname);
+  const [, setSelectedRoute] = useState(location.pathname);
   useEffect(() => {
     setSelectedRoute(location.pathname);
   }, [location.pathname]);
@@ -62,9 +62,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     ],
     []
   );
-const currentIndex = links.findIndex(
-  (link) => link.Route === location.pathname
-);
+
 const navRefs = useRef<(HTMLLIElement | null)[]>([]);
 
 const [offset, setOffset] = useState(0);
