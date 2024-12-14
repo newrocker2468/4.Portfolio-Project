@@ -1,6 +1,6 @@
 import "../styles/NavBar.css";
-import { FC } from "react";
-import { Link } from "react-router-dom";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { Link,useLocation } from "react-router-dom";
 import Arrow from "../icons/Arrow";
 import SystemIcon from "../icons/SystemIcon";
 import LinkedinIcon from "../icons/LinkedinIcon";
@@ -13,6 +13,11 @@ interface NavBarProps {
 }
 
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
+  const location = useLocation();
+  const [selectedRoute, setSelectedRoute] = useState(location.pathname);
+  useEffect(() => {
+    setSelectedRoute(location.pathname);
+  }, [location.pathname]);
   const onButtonClick = async (event: { preventDefault: () => void }) => {
     event.preventDefault(); // Prevent the default link behavior
     try {
@@ -35,24 +40,48 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     isDark = false;
   }
 
-  const links = [
-    {
-      name: "Projects",
-      Route: "/Projects",
-    },
-    {
-      name: "Qualifications",
-      Route: "/qualifications",
-    },
-    {
-      name: "Skills",
-      Route: "/skills",
-    },
-    {
-      name: "Contact Me",
-      Route: "/contactme",
-    },
-  ];
+  const links = useMemo(
+    () => [
+      {
+        name: "Home",
+        Route: "/",
+      },
+
+      {
+        name: "Qualifications",
+        Route: "/qualifications",
+      },
+      {
+        name: "Skills",
+        Route: "/skills",
+      },
+      {
+        name: "About Me",
+        Route: "/aboutme",
+      },
+    ],
+    []
+  );
+const currentIndex = links.findIndex(
+  (link) => link.Route === location.pathname
+);
+const navRefs = useRef<(HTMLLIElement | null)[]>([]);
+
+const [offset, setOffset] = useState(0);
+const [woffset, wsetOffset] = useState({ left: 0, width: 0, height: 0 });
+useEffect(() => {
+  const currentLinkIndex = links.findIndex(
+      (link) => link.Route === location.pathname
+    );
+    if (currentLinkIndex !== -1 && navRefs.current[currentLinkIndex]) {
+      setOffset(navRefs.current[currentLinkIndex]?.offsetLeft || 0);
+      wsetOffset({
+        left: navRefs.current[currentLinkIndex]?.offsetLeft || 0,
+        width: navRefs.current[currentLinkIndex]?.offsetWidth || 0,
+        height: navRefs.current[currentLinkIndex]?.offsetHeight || 0,
+      });
+    }
+}, [links, location.pathname]);
   return (
     <nav className={`flex justify-around items-center my-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
@@ -91,18 +120,40 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </div>
       </div>
 
-      <div className=''>
-        
-        <ul className='flex justify-around gap-4 bg-navglassbg bg-opacity-30 backdrop-blur-md px-7 py-2 rounded-3xl'>
-          {links.map((link) => (
-            <li key={link.name} className=''>
-              <Link to={link.Route} className=''>
-                
-                {link.name}
-              </Link>
+      <div className='relative flex justify-center items-center h-16'>
+        <ul className='relative flex justify-around gap-4 border-2 dark:border-navborder border-grey bg-opacity-20 overflow-hidden  rounded-3xl'>
+          {" "}
+          <div
+            className='absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full'
+            style={{
+              transform: `translateX(${offset}px)`,
+              width: `${woffset.width}px`,
+            }}
+          ></div>{" "}
+          {links.map((link, index) => (
+            <li
+              key={link.name}
+              ref={(el) => (navRefs.current[index] = el)}
+              className={`${
+                location.pathname === link.Route
+                  ? "text-white dark:text-black"
+                  : "dark:text-white text-black hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white"
+              } relative px-4 py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
+              style={
+                {
+                  // transform: `translateX(${offset}px)`,
+                  // width: `${woffset.width}px`,
+                  // height: `${woffset.height}px`,
+                }
+              }
+            >
+              <Link to={link.Route} className='relative z-10'>
+                {" "}
+                {link.name}{" "}
+              </Link>{" "}
             </li>
-          ))}
-        </ul>
+          ))}{" "}
+        </ul>{" "}
       </div>
 
       <div className='flex justify-around items-center gap-2'>
