@@ -5,8 +5,8 @@ import { useTheme } from "./components/useTheme";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
-import ContactMe from "./pages/ContactMe";
 import Skills from "./pages/Skills";
+import AboutMe from "./pages/AboutMe";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -33,27 +33,26 @@ function App() {
 
   return (
     <>
-        <div id='scroll-container' className='app-content'>
-          <NavBar
-            theme={theme}
-            toggleTheme={() => toggleTheme()}
-            effectiveTheme={effectiveTheme}
-          />
-          <div style={{ padding: "20px" }}>
-            <Routes>
-              <Route
-                path='/'
-                element={<Home ref={loaderRef} loading={loading} />}
-              />
-              <Route path='/contactme' element={<ContactMe />} />
-              <Route path='/qualifications' element={<ContactMe />} />
+      <div id='scroll-container' className='app-content'>
+        <NavBar
+          theme={theme}
+          toggleTheme={() => toggleTheme()}
+          effectiveTheme={effectiveTheme}
+        />
+        <div style={{ padding: "20px" }}>
+          <Routes>
+            <Route
+              path='/'
+              element={<Home ref={loaderRef} loading={loading} />}
+            />
+            <Route path='/aboutme' element={<AboutMe />} />
+            <Route path='/qualifications' element={<AboutMe />} />
             <Route path='/skills' element={<Skills />} />
-              <Route path='/projects' element={<ContactMe />} />
-              {/* <Route path="*" element={<NotFound />} /> */}
-            </Routes>
-          </div>
+            <Route path='/' element={<Home />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Routes>
         </div>
-
+      </div>
     </>
   );
 }
