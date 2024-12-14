@@ -15,6 +15,7 @@ interface NavBarProps {
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   const location = useLocation();
   const [, setSelectedRoute] = useState(location.pathname);
+  const navRefs = useRef<(HTMLLIElement | null)[]>([]);
   useEffect(() => {
     setSelectedRoute(location.pathname);
   }, [location.pathname]);
@@ -63,7 +64,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     []
   );
 
-const navRefs = useRef<(HTMLLIElement | null)[]>([]);
+
 
 const [offset, setOffset] = useState(0);
 const [woffset, wsetOffset] = useState({ left: 0, width: 0, height: 0 });
@@ -137,20 +138,13 @@ useEffect(() => {
                   ? "text-white dark:text-black"
                   : "dark:text-white text-black hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white"
               } relative px-4 py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
-              style={
-                {
-                  // transform: `translateX(${offset}px)`,
-                  // width: `${woffset.width}px`,
-                  // height: `${woffset.height}px`,
-                }
-              }
+            
             >
               <Link to={link.Route} className='relative z-10'>
-                {" "}
-                {link.name}{" "}
-              </Link>{" "}
+                {link.name}
+              </Link>
             </li>
-          ))}{" "}
+          ))}
         </ul>{" "}
       </div>
 
