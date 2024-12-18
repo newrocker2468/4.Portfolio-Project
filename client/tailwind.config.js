@@ -73,7 +73,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundColor: ["dark"], // Enable bg color change in dark mode
+      backgroundColor: ["dark"], 
       textColor: ["dark"],
       borderColor: ["dark"],
     },

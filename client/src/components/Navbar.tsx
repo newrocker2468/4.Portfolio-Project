@@ -168,7 +168,7 @@ useEffect(() => {
           <GithubIcon />
         </Link>
         <a
-          className='link bg-black dark:bg-grey dark:text-black text-white dark:hover:bg-white  rounded-2xl
+          className='link bg-black dark:bg-white dark:text-black text-white dark:hover:bg-grey  rounded-2xl
   flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95 cursor-pointer'
           onClick={onButtonClick}
         >

@@ -28,7 +28,7 @@ const Skills: React.FC = () => {
         </ReactFlowProvider> */}
    <div className="flex justify-center flex-wrap align-top w-3/5">
           {skills.map((skill, index) => {
-            return <div key={index} className='mr-1 mt-1 dark:bg-white  dark:text-black bg-black text-white rounded-2xl px-3 py-1 cursor-pointer hover:dark:bg-darkwhite hover:bg-lightblack text-xl'>{skill}</div>
+            return <div key={index} className='mr-1 mt-1 dark:bg-white  dark:text-black bg-black text-white rounded-2xl px-3 py-1 cursor-pointer hover:dark:bg-darkwhite hover:bg-lightblack '>{skill}</div>
           })}
    </div>
 
