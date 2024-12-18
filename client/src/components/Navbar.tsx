@@ -66,15 +66,15 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
 
 
 
-const [offset, setOffset] = useState(0);
-const [woffset, wsetOffset] = useState({ left: 0, width: 0, height: 0 });
+
+const [offset, setOffset] = useState({ left: 0, width: 0, height: 0 });
 useEffect(() => {
+  console.log(navRefs)
   const currentLinkIndex = links.findIndex(
       (link) => link.Route === location.pathname
     );
     if (currentLinkIndex !== -1 && navRefs.current[currentLinkIndex]) {
-      setOffset(navRefs.current[currentLinkIndex]?.offsetLeft || 0);
-      wsetOffset({
+      setOffset({
         left: navRefs.current[currentLinkIndex]?.offsetLeft || 0,
         width: navRefs.current[currentLinkIndex]?.offsetWidth || 0,
         height: navRefs.current[currentLinkIndex]?.offsetHeight || 0,
@@ -125,8 +125,8 @@ useEffect(() => {
           <div
             className='absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full'
             style={{
-              transform: `translateX(${offset}px)`,
-              width: `${woffset.width}px`,
+              transform: `translateX(${offset.left}px)`,
+              width: `${offset.width}px`,
             }}
           ></div>{" "}
           {links.map((link, index) => (
@@ -137,10 +137,10 @@ useEffect(() => {
                 location.pathname === link.Route
                   ? "text-white dark:text-black"
                   : "dark:text-white text-black hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white"
-              } relative px-4 py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
+              } relative py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
             
             >
-              <Link to={link.Route} className='relative z-10'>
+              <Link to={link.Route} className='relative z-10 py-2 px-4'>
                 {link.name}
               </Link>
             </li>
