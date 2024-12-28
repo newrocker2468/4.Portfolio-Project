@@ -29,7 +29,7 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
             <div className='flex justify-start mb-2'>
               <ProjectStatus status={project?.status} />
             </div>
-            <h2 className='text-xl text-center  mb-2 text-gray-900 dark:text-gray-100'>
+            <h2 className='text-xl text-center  mt-[2rem] mb-2 text-gray-900 dark:text-gray-100'>
               {project.name}
             </h2>
             <img

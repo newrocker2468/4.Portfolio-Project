@@ -53,7 +53,39 @@ const project = [
     description:
       "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
     image: "YelpCamp.png",
-    technologies: ["Node.js", "Express.js", "MongoDB", "Passport.js", "Bootstrap", "EJS", "Mapbox", "Cloudinary", "Heroku", "Unsplash API"],
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Passport.js",
+      "Bootstrap",
+      "EJS",
+      "Mapbox",
+      "Cloudinary",
+      "Heroku",
+      "Unsplash API",
+    ],
+    github: "https://github.com/yourusername/YelpCamp",
+    website: "https://yelpcamp.example.com",
+  },
+  {
+    name: "YelpCamp",
+    status: "Completed!",
+    description:
+      "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
+    image: "YelpCamp.png",
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Passport.js",
+      "Bootstrap",
+      "EJS",
+      "Mapbox",
+      "Cloudinary",
+      "Heroku",
+      "Unsplash API",
+    ],
     github: "https://github.com/yourusername/YelpCamp",
     website: "https://yelpcamp.example.com",
   },
@@ -86,7 +118,7 @@ const quote = quotes[Math.floor(Math.random() * quotes.length)];
 const Home = React.forwardRef<HTMLDivElement, HomeProps>(
   ({ className, loading }, ref) => {
     const { effectiveTheme } = useTheme();
-    const [View, SetView] = useState("list");
+    const [View, SetView] = useState("grid");
     const [, setActiveView] = useState(View);
       const listViewRef = useRef(null); 
       const gridViewRef = useRef(null);
@@ -120,14 +152,24 @@ const Home = React.forwardRef<HTMLDivElement, HomeProps>(
             </div>
           </div>
           <TransitionGroup className='my-4'>
-            <CSSTransition key={View} timeout={500} classNames='fade'
-              nodeRef={View === 'list' ? listViewRef : gridViewRef} >
+            <CSSTransition
+              key={View}
+              timeout={500}
+              classNames='fade'
+              nodeRef={View === "list" ? listViewRef : gridViewRef}
+            >
               {View === "list" ? (
-                <div ref ={listViewRef}className='flex items-center justify-center flex-col'>
+                <div
+                  ref={listViewRef}
+                  className='flex items-center justify-center flex-col'
+                >
                   <ListView projects={project} />
                 </div>
               ) : (
-                <div ref ={gridViewRef} className='grid grid-cols-3 gap-10 mx-[2rem]'>
+                <div
+                  ref={gridViewRef}
+                  className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  gap-10 mx-[2rem]'
+                >
                   <GridView projects={project} />
                 </div>
               )}
