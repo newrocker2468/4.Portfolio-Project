@@ -14,23 +14,27 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
   const [, setSelectedRoute] = useState(location.pathname);
   const navRefs = useRef<(HTMLLIElement | null)[]>([]);
   useEffect(() => {
     setSelectedRoute(location.pathname);
   }, [location.pathname]);
   const onButtonClick = async (event: { preventDefault: () => void }) => {
-    event.preventDefault(); // Prevent the default link behavior
+    event.preventDefault();
+    setLoading(true);
     try {
-      const response = await fetch("Resume.pdf");
-      const blob = await response.blob();
-      const fileURL = window.URL.createObjectURL(blob);
-      const alink = document.createElement("a");
-      alink.href = fileURL;
-      alink.download = "Resume.pdf"; // Set the desired filename here
-      alink.click();
+        const response = await fetch("Resume.pdf");
+        const blob = await response.blob();
+        const fileURL = window.URL.createObjectURL(blob);
+        const alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "Resume.pdf";
+        window.open(fileURL, "_blank");
     } catch (error) {
       console.error("Error fetching the PDF file:", error);
+    } finally {
+        setLoading(false);
     }
   };
 
@@ -82,10 +86,10 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     }
   }, [links, location.pathname]);
   useEffect(() => {
-    updateOffsets(); 
+    updateOffsets();
     window.addEventListener("resize", updateOffsets);
     return () => window.removeEventListener("resize", updateOffsets);
-  }, [updateOffsets]); 
+  }, [updateOffsets]);
   return (
     <nav className={`flex justify-around items-center my-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
@@ -172,11 +176,23 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
           <GithubIcon />
         </Link>
         <a
-          className='link bg-black dark:bg-white dark:text-black text-white dark:hover:bg-grey  rounded-2xl
-  flex justify-center items-center px-3 py-1  hover:bg-lightblack transition duration-200 ease-in-out active:scale-95 cursor-pointer'
+          className={`link bg-black dark:bg-white dark:text-black text-white dark:hover:bg-grey rounded-2xl flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
+            loading ? "ml-[1rem] px-1 py-1 " : "px-3 py-1"
+          }`}
           onClick={onButtonClick}
+          href='#'
         >
-          Resume <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
+          {loading ? (
+            <svg
+              className='animate-spin h-5 w-5 my-1 mx-2 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out'
+              viewBox='0 0 24 24'
+            ></svg>
+          ) : (
+            <>
+              Resume
+              <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
+            </>
+          )}
         </a>
       </div>
     </nav>

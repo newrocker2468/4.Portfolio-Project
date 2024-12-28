@@ -168,7 +168,7 @@ const Home = React.forwardRef<HTMLDivElement, HomeProps>(
               ) : (
                 <div
                   ref={gridViewRef}
-                  className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  gap-10 mx-[2rem]'
+                  className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3  gap-10 mx-[2rem]'
                 >
                   <GridView projects={project} />
                 </div>

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ProjectStatus from "./ProjectStatus";
-import TrimmerFunction from '../middlewares/TrimmerFunction';
+import TrimmerFunction from "../middlewares/TrimmerFunction";
 import TechCard from "./TechCard";
 
 interface Project {
@@ -23,13 +23,13 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
       {projects.map((project, index) => (
         <div
           key={index}
-          className='dark:bg-actgrey bg-white  rounded-xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer'
+          className='dark:bg-actgrey bg-white rounded-xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer'
         >
           <div className='p-4'>
             <div className='flex justify-start mb-2'>
               <ProjectStatus status={project?.status} />
             </div>
-            <h2 className='text-xl text-center  mt-[2rem] mb-2 text-gray-900 dark:text-gray-100'>
+            <h2 className='text-xl text-center mt-[2rem] mb-2 text-gray-900 dark:text-gray-100'>
               {project.name}
             </h2>
             <img
@@ -42,29 +42,25 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
             </p>
             <div className='flex flex-wrap justify-start'>
               {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                >        
-                <TechCard techName={tech} />
-
-               
+                <span key={index}>
+                  <TechCard techName={tech} />
                 </span>
               ))}
-              {/* <TechCard techName='Tailwind Css' />
-              <TechCard techName='React Js' /> */}
             </div>
             <div className='mt-4 flex justify-between items-center'>
               <a
                 href={project.github}
-                className='text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300'
+                className='relative inline-block text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition duration-300 ease-in-out'
               >
-                GitHub
+                <span className='absolute inset-0 transform -skew-x-12 bg-blue-300 dark:bg-blue-700 opacity-0 hover:opacity-50 transition duration-300 ease-in-out'></span>
+                <span className='relative'>GitHub</span>
               </a>
               <a
                 href={project.website}
-                className='text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300'
+                className='relative inline-block text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition duration-300 ease-in-out'
               >
-                Website
+                <span className='absolute inset-0 transform -skew-x-12 bg-blue-300 dark:bg-blue-700 opacity-0 hover:opacity-50 transition duration-300 ease-in-out'></span>
+                <span className='relative'>Website</span>
               </a>
             </div>
           </div>

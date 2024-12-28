@@ -46,7 +46,11 @@ const DiscordProfile: FC<{ profile: Profile }> = ({ profile }) => (
         <StatusIndicator status={profile.status} />
       </div>
     </div>
-    <img src={profile.avatar} alt='Avatar' className='rounded-full w-2/12' />
+    <img
+      src={profile.avatar}
+      alt='Avatar'
+      className='rounded-full w-auto sm:w-14 md:w-16 lg:w-20 max-w-20 '
+    />
   </>
 );
 
@@ -60,11 +64,11 @@ const InfoCard: FC<InfoCardProps> = ({
   return (
     <>
       {discord ? (
-        <div className='flex items-center justify-around border-2 border-grey rounded-2xl p-5 md:m-5 sm:m-0'>
+        <div className='flex items-center justify-around  dark:bg-actgrey bg-white sm:flex-col-reverse shadow-md xl:flex-row lg:flex-col-reverse rounded-2xl p-5 md:m-5 sm:m-0'>
           {profile && <DiscordProfile profile={profile} />}
         </div>
       ) : (
-        <div className='flex flex-col items-center justify-center border-2 border-grey rounded-2xl p-5 md:m-5 sm:m-0'>
+        <div className='flex flex-col items-center dark:bg-actgrey bg-white shadow-md justify-center rounded-2xl p-5 md:m-5 sm:m-0'>
           <h1>{title}</h1>
           <p>{status}</p>
           <p className='flex flex-col justify-center items-center flex-wrap overflow-hidden text-ellipsis max-w-full'>
