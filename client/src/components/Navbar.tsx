@@ -1,6 +1,6 @@
 import "../styles/NavBar.css";
-import { FC, useEffect, useMemo, useRef, useState } from "react";
-import { Link,useLocation } from "react-router-dom";
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Arrow from "../icons/Arrow";
 import SystemIcon from "../icons/SystemIcon";
 import LinkedinIcon from "../icons/LinkedinIcon";
@@ -64,23 +64,28 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     []
   );
 
-
-
-
-const [offset, setOffset] = useState({ left: 0, width: 0, height: 0 });
-useEffect(() => {
-  console.log(navRefs)
-  const currentLinkIndex = links.findIndex(
+  const [offset, setOffset] = useState({ left: 0, width: 0, height: 0 });
+  const updateOffsets = useCallback(() => {
+    const currentLinkIndex = links.findIndex(
       (link) => link.Route === location.pathname
     );
     if (currentLinkIndex !== -1 && navRefs.current[currentLinkIndex]) {
+      const rootFontSize = parseFloat(
+        getComputedStyle(document.documentElement).fontSize
+      );
+      const element = navRefs.current[currentLinkIndex];
       setOffset({
-        left: navRefs.current[currentLinkIndex]?.offsetLeft || 0,
-        width: navRefs.current[currentLinkIndex]?.offsetWidth || 0,
-        height: navRefs.current[currentLinkIndex]?.offsetHeight || 0,
+        left: element.offsetLeft / rootFontSize,
+        width: element.offsetWidth / rootFontSize,
+        height: element.offsetHeight / rootFontSize,
       });
     }
-}, [links, location.pathname]);
+  }, [links, location.pathname]);
+  useEffect(() => {
+    updateOffsets(); 
+    window.addEventListener("resize", updateOffsets);
+    return () => window.removeEventListener("resize", updateOffsets);
+  }, [updateOffsets]); 
   return (
     <nav className={`flex justify-around items-center my-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
@@ -125,8 +130,8 @@ useEffect(() => {
           <div
             className='absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full'
             style={{
-              transform: `translateX(${offset.left}px)`,
-              width: `${offset.width}px`,
+              transform: `translateX(${offset.left}rem)`,
+              width: `${offset.width}rem`,
             }}
           ></div>{" "}
           {links.map((link, index) => (
@@ -138,7 +143,6 @@ useEffect(() => {
                   ? "text-white dark:text-black"
                   : "dark:text-white text-black hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white"
               } relative py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
-            
             >
               <Link to={link.Route} className='relative z-10 py-2 px-4'>
                 {link.name}

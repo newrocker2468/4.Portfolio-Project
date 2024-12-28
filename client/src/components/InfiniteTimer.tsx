@@ -32,8 +32,8 @@ const InfiniteTimer = () => {
 
   return (
     <>
-      <h1>Age: {formatTime(time)}</h1>
-      <p>Moving fast, isn't it?</p>
+      <span>Age: {formatTime(time)}</span>
+      <span>Moving fast, isn't it?</span>
     </>
   );
 };
