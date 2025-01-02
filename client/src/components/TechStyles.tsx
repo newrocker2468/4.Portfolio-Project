@@ -97,6 +97,12 @@ const techStyles: { [key: string]: TechStyle } = {
     textColor: "text-mysqltext dark:text-mysqltextdark",
     svg: "MysqlIcon",
   },
+  Firebase:{
+    names: ["firebase"],
+    bgColor: "bg-firebasebg dark:bg-firebasebgdark",
+    textColor: "text-firebasetext dark:text-firebasetextdark",
+    svg: "FirebaseIcon",
+  },
 };
 
 export default techStyles;

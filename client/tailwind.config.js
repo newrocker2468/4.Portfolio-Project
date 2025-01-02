@@ -68,12 +68,16 @@ module.exports = {
         nextui: " #f0f0f0",
         nextuibg: "#d8d8d8",
         navborder: "#343434",
+        firebasebg: "#ffe9a6",
+        firebasebgdark: "#574409",
+        firebasetext: "#d98d00",
+        firebasetextdark: "#ffc100",
       },
     },
   },
   variants: {
     extend: {
-      backgroundColor: ["dark"], 
+      backgroundColor: ["dark"],
       textColor: ["dark"],
       borderColor: ["dark"],
     },

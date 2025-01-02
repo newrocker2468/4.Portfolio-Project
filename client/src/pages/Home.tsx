@@ -28,7 +28,7 @@ const project = [
     status: "Work in progress!",
     description:
       "Corenex UI is a versatile UI library inspired by uiverse.io, designed to help developers build modern web applications with ease. It offers features like Image to Table Data (Beta), CSS Challenges, ready-to-use CSS Elements, and a powerful Admin Panel for managing posts. The library also integrates Shadow DOM for better component isolation, provides event management features, and includes a Notes Upload feature in early beta. Perfect for enhancing user interaction and streamlining web development!",
-    image: "Corenexui (2).png",
+    image: "Corenexui2.webp",
     technologies: [
       "React Js",
       "Tailwind CSS",
@@ -52,7 +52,7 @@ const project = [
     status: "Completed!",
     description:
       "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
-    image: "YelpCamp.png",
+    image: "YelpCamp.webp",
     technologies: [
       "Node.js",
       "Express.js",
@@ -73,7 +73,7 @@ const project = [
     status: "Completed!",
     description:
       "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
-    image: "YelpCamp.png",
+    image: "YelpCamp.webp",
     technologies: [
       "Node.js",
       "Express.js",
