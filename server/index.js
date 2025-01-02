@@ -64,6 +64,12 @@ app.get("/profile", (req, res) => {
   res.json({ ...userProfile, status: userStatus });
 });
 
+
+app.get("/health", (req, res) => {
+  res.send("Server is up and running");
+})
+
+
 app.listen(3000, () => {
   console.log("App is running on port 3000");
 });

@@ -180,7 +180,6 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
             loading ? "ml-[1rem] px-1 py-1 " : "px-3 py-1"
           }`}
           onClick={onButtonClick}
-          href='#'
         >
           {loading ? (
             <svg
