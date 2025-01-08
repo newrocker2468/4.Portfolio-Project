@@ -1,8 +1,6 @@
 const FirebaseIcon = () =>{
     return (
       <svg
-        width='800px'
-        height='800px'
         viewBox='-47.5 0 351 351'
         version='1.1'
         xmlns='http://www.w3.org/2000/svg'
