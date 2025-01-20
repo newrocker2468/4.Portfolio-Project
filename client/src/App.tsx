@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar";
 import Home from "./pages/Home";
 import Skills from "./pages/Skills";
 import AboutMe from "./pages/AboutMe";
+import Qualifications from "./pages/Qualifications";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ function App() {
               element={<Home ref={loaderRef} loading={loading} />}
             />
             <Route path='/aboutme' element={<AboutMe />} />
-            <Route path='/qualifications' element={<AboutMe />} />
+            <Route path='/qualifications' element={<Qualifications />} />
             <Route path='/skills' element={<Skills />} />
             <Route path='/' element={<Home />} />
             {/* <Route path="*" element={<NotFound />} /> */}

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Profile } from "../types/Profile";
 import DiscordLogo from "../icons/DiscordLogo";
+import BlurContainer from "./BlurComponent";
 
 interface InfoCardProps {
   title?: string;
@@ -61,28 +62,27 @@ const InfoCard: FC<InfoCardProps> = ({
   discord,
   profile,
 }) => {
-  return (
-    <>
-      {discord ? (
-        <div className='flex items-center justify-around  dark:bg-actgrey bg-white sm:flex-col-reverse shadow-md xl:flex-row lg:flex-col-reverse rounded-2xl p-5 md:m-5 sm:m-0'>
-          {profile && <DiscordProfile profile={profile} />}
-        </div>
-      ) : (
-        <div className='flex flex-col items-center dark:bg-actgrey bg-white shadow-md justify-center rounded-2xl p-5 md:m-5 sm:m-0'>
-          <h1>{title}</h1>
-          <p>{status}</p>
-          <p className='flex flex-col justify-center items-center flex-wrap overflow-hidden text-ellipsis max-w-full'>
-            {desc}
-          </p>
-          {profile && (
-            <>
-              <h1>{profile.username}</h1>
-              <img src={profile.avatar} alt='Avatar' className='rounded-full' />
-            </>
-          )}
-        </div>
-      )}
-    </>
+  return discord ? (
+    <BlurContainer className='flex items-center justify-around dark:bg-infocardbg border-cardborder border border-solid border-1 bg-white sm:flex-col-reverse shadow-md xl:flex-row lg:flex-col-reverse rounded-2xl p-5 md:m-5 sm:m-0'>
+      {" "}
+      {profile && <DiscordProfile profile={profile} />}{" "}
+    </BlurContainer>
+  ) : (
+    <BlurContainer className='flex flex-col items-center dark:bg-infocardbg border-cardborder border border-solid border-1 bg-white shadow-md justify-center rounded-2xl p-5 md:m-5 sm:m-0'>
+      {" "}
+      <h1>{title}</h1> <p>{status}</p>{" "}
+      <p className='flex flex-col justify-center items-center flex-wrap overflow-hidden text-ellipsis max-w-full'>
+        {" "}
+        {desc}{" "}
+      </p>{" "}
+      {profile && (
+        <>
+          {" "}
+          <h1>{profile.username}</h1>{" "}
+          <img src={profile.avatar} alt='Avatar' className='rounded-full' />{" "}
+        </>
+      )}{" "}
+    </BlurContainer>
   );
 };
 

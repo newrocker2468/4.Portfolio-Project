@@ -16,6 +16,8 @@ module.exports = {
         lightyellow: "#393015",
         darkyellow: "#ffc400",
         actgrey: "#1f2020",
+        infocardbg: "#0a0a0a",
+        cardborder: "#1e1e1e",
         completed: "#87ffb4",
         darkgreen1: "#184217e6",
         darkgreen2: "#023900e6",

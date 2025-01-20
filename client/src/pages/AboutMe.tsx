@@ -29,16 +29,7 @@ const AboutMe = () => {
         <InfoCard title={"My Age"} desc={"21"} />
         <InfoCard title={"My Age"} desc={"21"} />
         <InfoCard discord={true} profile={profile} />
-        {/* {profile && (
-          <>
-            <h1>{profile.username}</h1>
-            <img
-              src={profile.avatar}
-              alt='Avatar'
-              className='rounded-full'
-            />
-          </>
-        )} */}
+     
       </div>
     </>
   );
