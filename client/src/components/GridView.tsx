@@ -2,17 +2,8 @@ import { FC } from "react";
 import ProjectStatus from "./ProjectStatus";
 import TrimmerFunction from "../middlewares/TrimmerFunction";
 import TechCard from "./TechCard";
-
-interface Project {
-  name: string;
-  status: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  github: string;
-  website: string;
-}
-
+import Project from "../types/Project"
+import {Link} from "react-router-dom"
 interface GridViewProps {
   projects: Project[];
 }
@@ -21,7 +12,7 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
   return (
     <>
       {projects.map((project, index) => (
-        <div
+        <Link to={`/projects/${project.name}`}
           key={index}
           className='dark:bg-actgrey bg-white rounded-xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer'
         >
@@ -47,7 +38,7 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
                 </span>
               ))}
             </div>
-            <div className='mt-4 flex justify-between items-center'>
+            {/* <div className='mt-4 flex justify-between items-center'>
               <a
                 href={project.github}
                 className='relative inline-block text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition duration-300 ease-in-out'
@@ -62,9 +53,9 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
                 <span className='absolute inset-0 transform -skew-x-12 bg-blue-300 dark:bg-blue-700 opacity-0 hover:opacity-50 transition duration-300 ease-in-out'></span>
                 <span className='relative'>Website</span>
               </a>
-            </div>
+            </div> */}
           </div>
-        </div>
+        </Link>
       ))}
     </>
   );

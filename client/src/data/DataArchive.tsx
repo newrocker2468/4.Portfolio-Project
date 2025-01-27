@@ -69,7 +69,7 @@ export const quotes = [
   },
   { quote: "Code never lies, comments sometimes do.", author: "Ron Jeffries" },
 ];
-export const project = [
+export const projects = [
   {
     name: "Portfolio",
     status: "Work in progress!",

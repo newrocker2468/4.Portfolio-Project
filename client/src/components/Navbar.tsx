@@ -84,12 +84,14 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         height: element.offsetHeight / rootFontSize,
       });
     }
-  }, [links, location.pathname]);
+  }, [location.pathname,links]);
+
   useEffect(() => {
     updateOffsets();
     window.addEventListener("resize", updateOffsets);
     return () => window.removeEventListener("resize", updateOffsets);
   }, [updateOffsets]);
+  
   return (
     <nav className={`flex justify-around items-center my-5 z-50`}>
       <div className='flex items-center gap-[1rem]  '>
@@ -131,13 +133,18 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
       <div className='relative flex justify-center items-center h-16'>
         <ul className='relative flex justify-around gap-4 border-2 dark:border-navborder border-grey bg-opacity-20 overflow-hidden  rounded-3xl'>
           {" "}
-          <div
-            className='absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full'
-            style={{
-              transform: `translateX(${offset.left}rem)`,
-              width: `${offset.width}rem`,
-            }}
-          ></div>{" "}
+          {location.pathname ==
+            links.find((link) => link.Route == location.pathname)?.Route && (
+            <>
+              <div
+                className={`absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full`}
+                style={{
+                  transform: `translateX(${offset.left}rem)`,
+                  width: `${offset.width}rem`,
+                }}
+              ></div>{" "}
+            </>
+          )}
           {links.map((link, index) => (
             <li
               key={link.name}

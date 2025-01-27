@@ -7,7 +7,7 @@ import { useTheme } from "../components/useTheme";
 import "../styles/Home.css"; // Ensure your CSS file with fade classes is imported
 import Loader from "../components/Loader";
 // import { motion } from "motion/react";
-import { quotes, project } from "../data/DataArchive";
+import { quotes, projects } from "../data/DataArchive";
 
 interface HomeProps {
   className?: string;
@@ -64,14 +64,14 @@ const Home = React.forwardRef<HTMLDivElement, HomeProps>(
                   ref={listViewRef}
                   className='flex items-center justify-center flex-col'
                 >
-                  <ListView projects={project} />
+                  <ListView projects={projects} />
                 </div>
               ) : (
                 <div
                   ref={gridViewRef}
                   className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3  gap-10 mx-[2rem]'
                 >
-                  <GridView projects={project} />
+                  <GridView projects={projects} />
                 </div>
               )}
             </CSSTransition>

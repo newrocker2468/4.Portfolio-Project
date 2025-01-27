@@ -28,14 +28,16 @@ const BlurContainer = ({ className, children }: BlurContainerProps) => {
       }
     };
 
-const handleMouseMove = (e: MouseEvent) => {
-  if (containerRef.current && blurRef.current) {
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    blurRef.current.style.transform = `translate(${x - 220}px, ${y - 80}px)`;
-  }
-};
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current && blurRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        blurRef.current.style.transform = `translate(${x - 220}px, ${
+          y - 80
+        }px)`;
+      }
+    };
 
     const handleMouseLeave = () => {
       if (blurRef.current) {

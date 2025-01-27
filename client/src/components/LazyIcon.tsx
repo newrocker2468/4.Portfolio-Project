@@ -6,7 +6,7 @@ interface LazyIconProps {
 }
 
 const LazyIcon: React.FC<LazyIconProps> = ({ iconName }) => {
-  const IconComponent = lazy(() => import(`../icons/${iconName}`));
+  const IconComponent = lazy(() => import(`../icons/${iconName}.tsx`));
 
   return (
     <Suspense fallback={<div className='loader'>Loading...</div>}>

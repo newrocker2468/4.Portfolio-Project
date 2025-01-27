@@ -7,11 +7,15 @@
 
 .blur-effect {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: rgb(255, 255, 255);
-  filter: blur(100px);
+  width: 120px; /* Slightly smaller size */
+  height: 80px; /* Slightly smaller size */
+  background: rgba(255, 255, 255, 0.5); /* Softer, more translucent glow */
+  border-radius: 50%; /* Ensures a circular shape */
+  filter: blur(80px); /* Reduced blur for a sharper glow */
   pointer-events: none;
-  transition: transform 0.1s;
+  transition: transform 0.1s ease-out, opacity 0.3s ease-in-out; /* Smooth transitions */
   display: none;
+  opacity: 0.8; /* Makes the effect slightly visible */
+  box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.5); /* Additional glow */
 }
+
