@@ -1,36 +1,68 @@
-import React from "react";
-import * as motion from "motion/react-client";
-import { FC } from "react";
+import React, { FC } from "react";
+import { motion } from "framer-motion";
+
 interface Props {
-  initial: { opacity: number; y: number };
-  animate: { opacity: number; y: number };
-  exit: { opacity: number; y: number };
-  transition: { duration: number };
+  initial?: {
+    opacity: number;
+    y?: number;
+    x?: number;
+    scale?: number;
+    rotate?: number;
+  };
+  animate?: {
+    opacity: number;
+    y?: number;
+    x?: number;
+    scale?: number;
+    rotate?: number;
+  };
+  exit?: {
+    opacity: number;
+    y?: number;
+    x?: number;
+    scale?: number;
+    rotate?: number;
+  };
+  transition?: {
+    duration: number;
+    delay?: number;
+    easing?: string;
+    rotate?: number;
+    type?: string;
+    damping?: number;
+    stiffness?: number;
+  };// Updated to accept more properties
 }
+
 interface EnterAnimationProps {
   children: React.ReactNode;
-  props?: Props;
+  props: Props;
+    loading: boolean; 
 }
-const EnterAnimation: FC<EnterAnimationProps> = ({ children, props = {} }) => {
-  {
-    const defaultProps: Props = {
-      initial: { opacity: 0, y: -50 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: 50 },
-      transition: { duration: 0.5 },
-    };
-    const finalProps = { ...defaultProps, ...props };
-    return (
-      <motion.div
-        initial={finalProps.initial}
-        animate={finalProps.animate}
-        exit={finalProps.exit}
-        transition={finalProps.transition}
-      >
-        {" "}
-        {children}{" "}
-      </motion.div>
-    );
+
+const EnterAnimation: FC<EnterAnimationProps> = ({ children, props, loading }) => {
+  const defaultProps: Props = {
+    initial: { opacity: 0, y: -50, scale: 0.8 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: 50, scale: 0.8 },
+    transition: { duration: 0.5, easing: "easeInOut" },
+  };
+
+  const finalProps = { ...defaultProps, ...props };
+
+if (!loading) {
+  return (
+    // {loading ? <div>Loading...</div> : ()}
+    <motion.div
+      initial={finalProps.initial}
+      animate={finalProps.animate}
+      exit={finalProps.exit}
+      transition={finalProps.transition}
+      {...finalProps} // Pass remaining props to the motion.div
+    >
+      {children}
+    </motion.div>
+  );
   }
 };
 

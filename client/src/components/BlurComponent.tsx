@@ -4,6 +4,7 @@ import "../styles/BlurContainer.css"; // Import the CSS for styling
 interface BlurContainerProps {
   className?: string;
   children: ReactNode;
+  ref?: unknown;
 }
 
 const BlurContainer = ({ className, children }: BlurContainerProps) => {

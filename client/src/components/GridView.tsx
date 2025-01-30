@@ -12,10 +12,12 @@ const GridView: FC<GridViewProps> = ({ projects }) => {
   return (
     <>
       {projects.map((project, index) => (
+        
         <Link to={`/projects/${project.name}`}
           key={index}
           className='dark:bg-actgrey bg-white rounded-xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer'
         >
+          
           <div className='p-4'>
             <div className='flex justify-start mb-2'>
               <ProjectStatus status={project?.status} />

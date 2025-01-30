@@ -104,7 +104,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
             />
           ) : isDark ? (
             <img
-              src='sun.svg'
+              src='/sun.svg'
               alt=''
               width={30}
               height={30}
@@ -113,7 +113,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
             />
           ) : (
             <img
-              src='moon.svg'
+              src='/moon.svg'
               alt=''
               width={30}
               height={30}
