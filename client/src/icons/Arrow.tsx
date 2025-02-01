@@ -1,23 +1,24 @@
 import React from "react";
 
 type ArrowProps = {
-  isDark: boolean;
   w: number;
   h: number;
   style?: string;
+  rotate?: number;
+  theme?: string;
 };
 
-const Arrow: React.FC<ArrowProps> = ({ isDark, w, h, style }) => (
+const Arrow: React.FC<ArrowProps> = ({ theme, w, h, style,rotate }) => (
   <div className={`${style}`}>
     <svg
-      fill={isDark ? "#000" : "#fff"}
+      fill={theme ==="dark" ? "#000" : "#fff"}
       height={`${h}`}
       width={`${w}`}
       version='1.1'
       id='Layer_1'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 242.133 242.133'
-      transform='rotate(-90)'
+      transform={rotate ? `rotate(${rotate})` : "rotate(-90)"}
     >
       <g id='SVGRepo_bgCarrier' strokeWidth='0' />
 

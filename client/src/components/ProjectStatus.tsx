@@ -1,8 +1,10 @@
 import { FC } from "react";
 interface ProjectStatusProps {
   status: string;
+  position?: string;
+  className?: string;
 }
-const ProjectStatus: FC<ProjectStatusProps> = ({ status }) => {
+const ProjectStatus: FC<ProjectStatusProps> = ({ status,position,className }) => {
 
   const statusClasses: { [key: string]: string[] } = {
     "workinprogress!": ["bg-darkyellow", "dark:text-darkyellow", "dark:bg-lightyellow"], 
@@ -23,7 +25,7 @@ const ProjectStatus: FC<ProjectStatusProps> = ({ status }) => {
 
   return (
     <>
-      <span className={`${getClassesForStatus(status)} absolute left-7 top-5 ${status == 'Work in progress1' ? 'bg-darkyellow  dark:text-darkyellow dark:bg-lightyellow' : ""} bg-opacity-90 px-2 py-1 rounded-2xl text-xs font-semibold`}>
+      <span className={`${getClassesForStatus(status)} ${className} absolute ${position} ${position=="absolute" ?"left-7 top-5" : ""} ${status == 'Work in progress1' ? 'bg-darkyellow  dark:text-darkyellow dark:bg-lightyellow' : ""} bg-opacity-90 px-2 py-1 rounded-2xl text-xs font-semibold`}>
         {status}
       </span>
     </>

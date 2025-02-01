@@ -6,19 +6,25 @@
 opacity:1 ;
   z-index: 10;
 }
-.loader{
-position: absolute;
-  top: 30%;
-  left: 50%;
-
-}
-.loader-bg{
- position: fixed;
+.loader-bg {
+  position: fixed; /* Ensure it covers the viewport */
+  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
- 
+  width: 100vw; /* Use viewport width */
+  height: 100vh; /* Use viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; /* Ensure it's on top */
 }
+
+.loader {
+  position: relative; /* Relative to the loader-bg */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .bar {
   display: inline-block;
   width: 3px;

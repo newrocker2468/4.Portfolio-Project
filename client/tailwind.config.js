@@ -9,6 +9,10 @@ module.exports = {
       textShadow: {
         custom: "1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue",
       },
+      fontFamily: {
+        nunito: ["Nunito", "sans-serif"],
+        robotoFlex: ['"Roboto Flex"', "sans-serif"],
+      },
       colors: {
         grey: "#e8e8e8",
         paragrey: "#a7a7a7",

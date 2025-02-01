@@ -37,10 +37,16 @@ interface Props {
 interface EnterAnimationProps {
   children: React.ReactNode;
   props: Props;
-    loading: boolean; 
+  loading: boolean;
+  className?: string;
 }
 
-const EnterAnimation: FC<EnterAnimationProps> = ({ children, props, loading }) => {
+const EnterAnimation: FC<EnterAnimationProps> = ({
+  children,
+  props,
+  loading,
+  className,
+}) => {
   const defaultProps: Props = {
     initial: { opacity: 0, y: -50, scale: 0.8 },
     animate: { opacity: 1, y: 0, scale: 1 },
@@ -50,19 +56,20 @@ const EnterAnimation: FC<EnterAnimationProps> = ({ children, props, loading }) =
 
   const finalProps = { ...defaultProps, ...props };
 
-if (!loading) {
-  return (
-    // {loading ? <div>Loading...</div> : ()}
-    <motion.div
-      initial={finalProps.initial}
-      animate={finalProps.animate}
-      exit={finalProps.exit}
-      transition={finalProps.transition}
-      {...finalProps} // Pass remaining props to the motion.div
-    >
-      {children}
-    </motion.div>
-  );
+  if (!loading) {
+    return (
+      // {loading ? <div>Loading...</div> : ()}
+      <motion.div
+        initial={finalProps.initial}
+        animate={finalProps.animate}
+        exit={finalProps.exit}
+        transition={finalProps.transition}
+        {...finalProps} // Pass remaining props to the motion.div
+        className={`${className}`}
+      >
+        {children}
+      </motion.div>
+    );
   }
 };
 

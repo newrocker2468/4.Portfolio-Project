@@ -38,13 +38,6 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     }
   };
 
-  let isDark = false;
-  if (effectiveTheme == "dark") {
-    isDark = true;
-  } else {
-    isDark = false;
-  }
-
   const links = useMemo(
     () => [
       {
@@ -93,22 +86,22 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   }, [updateOffsets]);
   
   return (
-    <nav className={`flex justify-around items-center my-5 z-50`}>
-      <div className='flex items-center gap-[1rem]  '>
-        {theme === "system" ? "System" : theme === "light" ? "Light" : "Dark"}
-        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white'>
+    <nav className={`flex justify-around items-center my-5 z-10`}>
+      <div className='flex items-center gap-[1rem] z-10 '>
+        {/* {theme === "system" ? "System" : theme === "light" ? "Light" : "Dark"} */}
+        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white z-10'>
           {theme === "system" ? (
             <SystemIcon
               effectiveTheme={effectiveTheme}
               toggleTheme={toggleTheme}
             />
-          ) : isDark ? (
+          ) : effectiveTheme == "dark" ? (
             <img
               src='/sun.svg'
               alt=''
               width={30}
               height={30}
-              className='sun'
+              className='sun z-10'
               onClick={toggleTheme}
             />
           ) : (
@@ -117,27 +110,27 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
               alt=''
               width={30}
               height={30}
-              className='moon'
+              className='moon z-10'
               onClick={toggleTheme}
             />
           )}
         </div>
-        <div className='flex justify-center flex-col'>
-          <span className='font-medium'>
+        <div className='flex justify-center flex-col z-10'>
+          <span className='font-medium z-10'>
             <Link to='/'>Jaskaran Singh</Link>
           </span>
-          <span className='text-gray-400'>Full Stack Dev</span>
+          <span className='text-gray-400 z-10'>Full Stack Dev</span>
         </div>
       </div>
 
-      <div className='relative flex justify-center items-center h-16'>
-        <ul className='relative flex justify-around gap-4 border-2 dark:border-navborder border-grey bg-opacity-20 overflow-hidden  rounded-3xl'>
+      <div className='relative flex justify-center items-center h-16 z-10'>
+        <ul className='relative flex z-10 justify-around gap-4 border-2 dark:border-navborder border-grey bg-opacity-20 overflow-hidden  rounded-3xl'>
           {" "}
           {location.pathname ==
             links.find((link) => link.Route == location.pathname)?.Route && (
             <>
               <div
-                className={`absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full`}
+                className={` z-10 absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full`}
                 style={{
                   transform: `translateX(${offset.left}rem)`,
                   width: `${offset.width}rem`,
@@ -163,7 +156,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </ul>{" "}
       </div>
 
-      <div className='flex justify-around items-center gap-2'>
+      <div className='flex justify-around items-center z-10 gap-2'>
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
           className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white '
@@ -172,31 +165,36 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </Link>
         <Link
           to='https://www.linkedin.com/in/jaskaransc'
-          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
+          className='flex justify-center items-center z-10 hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
         >
           <LinkedinIcon />
         </Link>
         <Link
           to='https://github.com/newrocker2468'
-          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
+          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 z-10 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
         >
           <GithubIcon />
         </Link>
         <a
-          className={`link bg-black dark:bg-white dark:text-black text-white dark:hover:bg-grey rounded-2xl flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
+          className={`link bg-black dark:bg-white z-10 dark:text-black text-white dark:hover:bg-grey rounded-2xl flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
             loading ? "ml-[1rem] px-1 py-1 " : "px-3 py-1"
           }`}
           onClick={onButtonClick}
         >
           {loading ? (
             <svg
-              className='animate-spin h-5 w-5 my-1 mx-2 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out'
+              className='animate-spin h-5 w-5 my-1 mx-2 z-10 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out'
               viewBox='0 0 24 24'
             ></svg>
           ) : (
             <>
               Resume
-              <Arrow isDark={isDark} w={10} h={10} style='ml-1.5 arrow' />
+              <Arrow
+                theme={effectiveTheme}
+                w={10}
+                h={10}
+                style='ml-1.5 arrow z-10'
+              />
             </>
           )}
         </a>

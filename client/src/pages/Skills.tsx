@@ -2,6 +2,7 @@ import Loader from "../components/Loader";
 import "../styles/Skills.css";
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../components/useTheme";
+import { useLenis } from "lenis/react";
 
 interface HomeProps {
   className?: string;
@@ -13,28 +14,33 @@ const skills = ["React Js", "Node Js", "Express Js", "MongoDB", "PostgreSQL", "T
 const Skills = React.forwardRef<HTMLDivElement,HomeProps>(() => {
 const { effectiveTheme } = useTheme();
    const [Loading, setLoading] = useState(true);
-   const isFirstLoad = useRef(true);
    const loaderRef = useRef<HTMLDivElement | null>(null);
+   const lenis = useLenis();
 
-    const handleLoad = () => {
+  const handleLoad = React.useCallback(() => {
+    lenis?.scrollTo("top"); // Scroll to the top of the page
+
+    document.body.style.overflow = "hidden"; // standard no-scroll implementation
+    document.body.setAttribute("data-lenis-prevent", "true");
+    // lenis?.stop();
+
+    setTimeout(() => {
+      if (loaderRef.current) {
+        loaderRef.current.style.transition = "opacity 0.5s ease-out";
+        loaderRef.current.style.opacity = "0";
+      }
+
       setTimeout(() => {
-        if (loaderRef.current) {
-          loaderRef.current.style.transition = "opacity 0.5s ease-out";
-          loaderRef.current.style.opacity = "0";
-        }
-        setTimeout(() => {
-          setLoading(false);
-        }, 500); // Duration of the fade-out effect
-      }, 2000); // Delay before the fade-out effect starts (2 seconds)
-    };
-      useEffect(() => {
-        if (isFirstLoad.current) {
-          window.addEventListener("load", handleLoad);
-          isFirstLoad.current = false;
-        } else handleLoad();
+        setLoading(false);
+        document.body.removeAttribute("data-lenis-prevent");
+        document.body.style.overflow = "auto";
+      }, 500); // Duration of the fade-out effect
+    }, 2000); // Delay before the fade-out effect starts
+  }, [lenis]);
 
-        return () => window.removeEventListener("load", handleLoad);
-      }, [Loading, isFirstLoad]);
+  useEffect(() => {
+    handleLoad();
+  }, [handleLoad]);
   return (
     <>
       {Loading && (
