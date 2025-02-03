@@ -21,7 +21,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   const lenis = useLenis();
 const handleLoad = React.useCallback(() => {
   lenis?.scrollTo("top");
-  // Set attribute to prevent scrolling
+
   document.body.setAttribute("data-lenis-prevent", "true");
   document.body.style.overflow = "hidden"; // Lock scrolling
 
@@ -33,7 +33,7 @@ const handleLoad = React.useCallback(() => {
 
     setTimeout(() => {
       setLoading(false);
-      document.body.style.overflow = "auto"; // Unlock scrolling
+      document.body.style.overflowY = "auto"; // Unlock scrolling
       document.body.removeAttribute("data-lenis-prevent");
     }, 500); // Duration of the fade-out effect
   }, 2000); // Delay before the fade-out effect starts
@@ -56,13 +56,29 @@ useEffect(() => {
         />
       )}
       <div className='flex justify-start items-center transition-all duration-1000 ease-in-out'>
-        <Link
-          to={"/"}
-          className='dark:bg-white dark:text-black  flex justify-start items-center py-1 px-3 rounded-2xl cursor-pointer hover:bg-[#565656] bg-black text-white transition-all duration-700 ease-in-out'
+        <EnterAnimation
+          props={{
+            initial: { opacity: 0, scale: 0.8 },
+            animate: { opacity: 1, scale: 1 },
+            exit: { opacity: 0, scale: 0.8 },
+            transition: {
+              duration: 1,
+              type: "spring",
+              damping: 10,
+              stiffness: 50,
+              delay: 0.5,
+            },
+          }}
+          loading={Loading}
         >
-          <Arrow w={15} h={15} rotate={135} theme={effectiveTheme} />{" "}
-          <span className='ml-[0.6rem] relative top-[-1px]'>Back</span>
-        </Link>
+          <Link
+            to={"/"}
+            className=' flex justify-start items-center py-1 px-3 rounded-2xl cursor-pointer hover:bg-[#313131]  transition-all duration-700 ease-in-out ml-[2rem]'
+          >
+            <Arrow w={10} h={10} rotate={135} fill={"#ffffff"} />{" "}
+            <span className='ml-[0.3rem] relative top-[-1px] '>Back</span>
+          </Link>
+        </EnterAnimation>
       </div>
       <EnterAnimation
         props={{
@@ -74,6 +90,7 @@ useEffect(() => {
             type: "spring",
             damping: 10,
             stiffness: 50,
+            delay: 0.7,
           },
         }}
         loading={Loading}
@@ -120,9 +137,11 @@ useEffect(() => {
             <span className='mt-5  font-nunito'>Github - Source Code</span>
             <a
               href={`${Project?.github}`}
-              target='_blank'
-              className={`dark:text-[#a3a3a3] text-center dark:hover:text-${
-                Project.status == "Work in progress!" ? "[#ffc400]" : ""
+              // target='_blank'
+              className={`dark:text-[#a3a3a3] text-center ${
+                Project.status == "Work in progress!"
+                  ? "dark:hover:text-[#ffc400]"
+                  : "dark:hover:text-[#77faaf]"
               } hover:underline cursor-pointer transition-colors duration-500`}
             >
               {Project?.github}
@@ -133,14 +152,22 @@ useEffect(() => {
             <a
               href={`${Project?.github}`}
               target='_blank'
-              className={`dark:text-[#a3a3a3] text-center dark:hover:text-${
-                Project.status == "Work in progress!" ? "[#ffc400]" : ""
+              className={`dark:text-[#a3a3a3] text-center ${
+                Project.status == "Work in progress!"
+                  ? "dark:hover:text-[#ffc400]"
+                  : "dark:hover:text-[#77faaf]"
               } hover:underline cursor-pointer transition-colors duration-500`}
             >
               {Project?.website}
             </a>
           </section>
-
+          <div className='flex justify-center flex-col items-center'>
+            <span className=' text-center text-md'>My Role</span>
+            <p className='dark:text-[#a3a3a3] text-md mx-4'>{Project?.role}</p>
+          </div>
+          <div className='flex justify-center flex-col items-center'>
+            
+          </div>
           <div className='lg:col-span-2 flex justify-center flex-col items-center'>
             <span className='text-lg'>Project Overview</span>
             <p className='text-md dark:text-[#a3a3a3]'>

@@ -1,6 +1,5 @@
 import InfoCard from "../components/InfoCard";
 import InfiniteTimer from "../components/InfiniteTimer";
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Profile } from "../types/Profile";
 import React from "react";
@@ -8,6 +7,7 @@ import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
 import EnterAnimation from "../components/EnterAnimation";
 import { useLenis } from "lenis/react";
+import fetchProfile from "../middlewares/DiscordProfileFetcher";
 interface HomeProps {
   className?: string;
   loading?: boolean;
@@ -44,16 +44,9 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
-  const fetchProfile = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/profile");
-      setProfile(response.data);
-    } catch (error) {
-      console.error("Error fetching Discord profile:", error);
-    }
-  };
+ 
   useEffect(() => {
-    fetchProfile();
+    fetchProfile(setProfile);
   }, []);
 
   return (

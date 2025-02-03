@@ -6,6 +6,9 @@ import SystemIcon from "../icons/SystemIcon";
 import LinkedinIcon from "../icons/LinkedinIcon";
 import GithubIcon from "../icons/GithubIcon";
 import CoffeeIcon from "../icons/CoffeeIcon";
+import HamBurger from "../icons/HamBurgerIcon";
+import HamBurgerMenu from "./HamburgerMenu";
+import {Routes} from "../data/DataArchive";
 interface NavBarProps {
   theme: string;
   effectiveTheme: string;
@@ -14,6 +17,7 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [, setSelectedRoute] = useState(location.pathname);
   const navRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -37,29 +41,10 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         setLoading(false);
     }
   };
-
-  const links = useMemo(
-    () => [
-      {
-        name: "Home",
-        Route: "/",
-      },
-
-      {
-        name: "Qualifications",
-        Route: "/qualifications",
-      },
-      {
-        name: "Skills",
-        Route: "/skills",
-      },
-      {
-        name: "About Me",
-        Route: "/aboutme",
-      },
-    ],
-    []
-  );
+useEffect(() => {
+  console.log("isMenuOpen", isMenuOpen);
+}, [isMenuOpen]);
+  const links = useMemo(() => Routes, []);
 
   const [offset, setOffset] = useState({ left: 0, width: 0, height: 0 });
   const updateOffsets = useCallback(() => {
@@ -86,8 +71,10 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   }, [updateOffsets]);
   
   return (
-    <nav className={`flex justify-around items-center my-5 z-10`}>
-      <div className='flex items-center gap-[1rem] z-10 '>
+    <nav
+      className={`flex justify-between sm:justify-around items-center my-5 z-10`}
+    >
+      <div className='flex items-center sm:gap-0 md:gap-[1rem] z-10 ml-5 sm:ml-0 '>
         {/* {theme === "system" ? "System" : theme === "light" ? "Light" : "Dark"} */}
         <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white z-10'>
           {theme === "system" ? (
@@ -123,7 +110,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </div>
       </div>
 
-      <div className='relative flex justify-center items-center h-16 z-10'>
+      <div className='relative sm:flex justify-center items-center h-16 z-10 hidden'>
         <ul className='relative flex z-10 justify-around gap-4 border-2 dark:border-navborder border-grey bg-opacity-20 overflow-hidden  rounded-3xl'>
           {" "}
           {location.pathname ==
@@ -148,7 +135,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
                   : "dark:text-white text-black hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white"
               } relative py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
             >
-              <Link to={link.Route} className='relative z-10 py-2 px-4'>
+              <Link to={link.Route} className='relative z-10 py-2 px-2 lg:px-4'>
                 {link.name}
               </Link>
             </li>
@@ -159,31 +146,31 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
       <div className='flex justify-around items-center z-10 gap-2'>
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
-          className='flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white '
+          className='lg:flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white hidden'
         >
           <CoffeeIcon />
         </Link>
         <Link
           to='https://www.linkedin.com/in/jaskaransc'
-          className='flex justify-center items-center z-10 hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
+          className='md:flex justify-center items-center z-10 hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white hidden'
         >
           <LinkedinIcon />
         </Link>
         <Link
           to='https://github.com/newrocker2468'
-          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 z-10 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white'
+          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 z-10 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white hidden lg:flex'
         >
           <GithubIcon />
         </Link>
         <a
-          className={`link bg-black dark:bg-white z-10 dark:text-black text-white dark:hover:bg-grey rounded-2xl flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
+          className={`link bg-black dark:bg-white z-10 dark:text-black text-white dark:hover:bg-grey rounded-2xl hidden sm:flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
             loading ? "ml-[1rem] px-1 py-1 " : "px-3 py-1"
           }`}
           onClick={onButtonClick}
         >
           {loading ? (
             <svg
-              className='animate-spin h-5 w-5 my-1 mx-2 z-10 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out'
+              className='animate-spin h-5 w-5 my-1 mx-2 z-10 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out '
               viewBox='0 0 24 24'
             ></svg>
           ) : (
@@ -198,6 +185,10 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
             </>
           )}
         </a>
+        <div className='sm:hidden mr-10' onClick={() => setIsMenuOpen(true)}>
+          <HamBurger />
+        </div>
+        <HamBurgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </div>
     </nav>
   );

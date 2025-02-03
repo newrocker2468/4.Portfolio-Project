@@ -15,8 +15,8 @@ const BlurContainer = ({ className, children }: BlurContainerProps) => {
     const handleMouseEnter = (e: MouseEvent) => {
       if (containerRef.current && blurRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left - blurRef.current.offsetWidth / 2;
-        const y = e.clientY - rect.top - blurRef.current.offsetHeight / 2;
+        const x = e.clientX - rect.left 
+        const y = e.clientY - rect.top 
         blurRef.current.style.transform = `translate(${x}px, ${y}px)`;
 
         // Hide the blur effect during repositioning

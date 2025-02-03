@@ -103,6 +103,42 @@ export const projects = [
     ],
     github: "https://github.com/newrocker2468/CoreNexUI",
     website: "https://corenexui.jaskaran.dev/home",
+    role: "I was the group leader and managed everything, including front-end and back-end development.",
+    timeline: "1 April 2024 - 17 May 2024",
+    ongoingWork: [
+      "Enhance performance for larger datasets",
+      "Introduce new user customization options",
+      "Improve accessibility features",
+    ],
+    testing: {
+      strategy:
+        "Conducted testing after each commit to ensure stability and functionality.",
+      errorHandling:
+        "Fixed any errors identified during testing, followed by additional testing to verify the fixes.",
+    },
+  },
+
+  {
+    name: "YelpCamp",
+    status: "Completed!",
+    description:
+      "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
+    image: "YelpCamp.webp",
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Passport.js",
+      "Bootstrap",
+      "EJS",
+      "Mapbox",
+      "Cloudinary",
+      "Heroku",
+      "Unsplash API",
+    ],
+    github: "https://github.com/yourusername/YelpCamp",
+    website: "https://yelpcamp.jaskaran.dev",
+    role: "Sole Developer. Built the project individually, incorporating custom middlewares and styles to enhance the functionality and aesthetics beyond the course material.",
   },
   {
     name: "YelpCamp",
@@ -124,26 +160,26 @@ export const projects = [
     ],
     github: "https://github.com/yourusername/YelpCamp",
     website: "https://yelpcamp.example.com",
+    role: "Sole Developer. Built the project individually, incorporating custom middlewares and styles to enhance the functionality and aesthetics beyond the course material.",
+  },
+];
+
+export const Routes = [
+  {
+    name: "Home",
+    Route: "/",
+  },
+
+  {
+    name: "Qualifications",
+    Route: "/qualifications",
   },
   {
-    name: "YelpCamp",
-    status: "Completed!",
-    description:
-      "YelpCamp is a community-driven web platform designed to bring together camping lovers from around the globe. Whether you're a seasoned adventurer or a novice exploring the world of camping, YelpCamp offers a space to share your experiences, discover new locations, and connect with like-minded individuals.",
-    image: "YelpCamp.webp",
-    technologies: [
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Passport.js",
-      "Bootstrap",
-      "EJS",
-      "Mapbox",
-      "Cloudinary",
-      "Heroku",
-      "Unsplash API",
-    ],
-    github: "https://github.com/yourusername/YelpCamp",
-    website: "https://yelpcamp.example.com",
+    name: "Skills",
+    Route: "/skills",
+  },
+  {
+    name: "About Me",
+    Route: "/aboutme",
   },
 ];

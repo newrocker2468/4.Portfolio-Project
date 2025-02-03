@@ -11,7 +11,7 @@ import {useLenis} from "lenis/react"
 import React from "react";
 import EnterAnimation from "../components/EnterAnimation";
 import { useLocation } from "react-router-dom";
-
+import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 interface HomeProps {
   className?: string;
 }
@@ -62,7 +62,16 @@ const handleLoad = React.useCallback(() => {
   useEffect(() => {
     setActiveView(View);
   }, [View]);
-
+  const options = {
+    speed: 3,
+    particleCount: 100,
+    spread: 60,
+    origin: {
+      x: 0.5,
+      y: 0.3,
+    },
+    
+  };
   return (
     <>
       {Loading && (
@@ -71,7 +80,9 @@ const handleLoad = React.useCallback(() => {
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
+      
       <main className={`dark:text-white ${className}`}>
+        {/* <Fireworks autorun={options} />; */}
         <EnterAnimation
           props={{
             initial: { opacity: 0, y: -100 },
@@ -88,7 +99,7 @@ const handleLoad = React.useCallback(() => {
           loading={Loading}
         >
           <div className='flex items-center justify-center m-5 text-center text-5xl text-shadow-custom'>
-            <span className='mx-80'>
+            <span className='mx-10 md:mx-20 lg:mx-70 xl:mx-80'>
               {quote.quote} - {quote.author}
             </span>
           </div>
@@ -111,7 +122,7 @@ const handleLoad = React.useCallback(() => {
           <div className='text-center my-[1rem]'>
             <div className='flex justify-center my-[2rem]'>
               <section className='relative w-3/4'>
-                <div className='absolute left-10'>
+                <div className='absolute sm:left-0 md:left-10 '>
                   <Switcher View={View} SetView={SetView} />
                 </div>
                 <h1 className='text-xl'>Projects</h1>
@@ -126,20 +137,20 @@ const handleLoad = React.useCallback(() => {
               nodeRef={View === "list" ? listViewRef : gridViewRef}
             >
               {View === "list" ? (
-                  <div
-                    ref={listViewRef}
-                    className='flex items-center justify-center flex-col'
-                  >
-                    <ListView projects={projects} />
-                  </div>
+                <div
+                  ref={listViewRef}
+                  className='flex items-center justify-center flex-col'
+                >
+                  <ListView projects={projects} />
+                </div>
               ) : (
-                  <div
-                    ref={gridViewRef}
-                    className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3  gap-10 mx-[2rem]'
-                  >
-                    {" "}
-                    <GridView projects={projects} />
-                  </div>
+                <div
+                  ref={gridViewRef}
+                  className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3  gap-10 mx-[2rem]'
+                >
+                  {" "}
+                  <GridView projects={projects} />
+                </div>
               )}
             </CSSTransition>
           </TransitionGroup>

@@ -6,4 +6,11 @@ export default interface Project {
   technologies: string[];
   github: string;
   website: string;
+  role?: string;
+  timeline?:string,
+  ongoingWork?: string[];
+  testing?: {
+    strategy: string;
+    errorHandling: string;
+  };
 }

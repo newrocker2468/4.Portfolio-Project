@@ -1,5 +1,6 @@
 import  { FC, useState } from "react";
 import ProjectStatus from "./ProjectStatus";
+import { Link } from "react-router-dom";
 interface Project {
   name: string;
   status: string;
@@ -28,12 +29,12 @@ const ExtentedView: FC<ExtentedViewProps> = ({ projects }) => {
   return (
     <>
       {projects.map((project, index) => (
-        <div
+        <Link
           key={index}
+          to={`/projects/${project.name}`}
           className='dark:bg-actgrey bg-white  shadow-2xl border-paragrey dark:border-black rounded-2xl sm:w-[70%] h-auto p-5 m-5 mb-[5rem] relative overflow-hidden cursor-pointer '
           onMouseEnter={() => handleMouseEnter(index)}
-          onMouseLeave={handleMouseLeave}
-        >
+          onMouseLeave={handleMouseLeave}        >
           <ProjectStatus status={project?.status} />
           <br />
           <div className='m-2 text-center text-xl'> {project.name}</div>
@@ -47,7 +48,7 @@ const ExtentedView: FC<ExtentedViewProps> = ({ projects }) => {
               }`}
             />
           </div>
-        </div>
+        </Link>
       ))}
     </>
   );

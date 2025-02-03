@@ -6,12 +6,13 @@ type ArrowProps = {
   style?: string;
   rotate?: number;
   theme?: string;
+  fill?: string;
 };
 
-const Arrow: React.FC<ArrowProps> = ({ theme, w, h, style,rotate }) => (
+const Arrow: React.FC<ArrowProps> = ({ theme, w, h, style, rotate, fill }) => (
   <div className={`${style}`}>
     <svg
-      fill={theme ==="dark" ? "#000" : "#fff"}
+      fill={theme ? (theme === "dark" ? "#000" : "#fff") : fill}
       height={`${h}`}
       width={`${w}`}
       version='1.1'
@@ -29,7 +30,6 @@ const Arrow: React.FC<ArrowProps> = ({ theme, w, h, style,rotate }) => (
       />
 
       <g id='SVGRepo_iconCarrier'>
-        
         <path
           id='XMLID_24_'
           d='M190.919,212.133h-69.853c-8.284,0-15,6.716-15,15s6.716,15,15,15h106.065c8.284,0,15-6.716,15-15V121.066 c0-8.284-6.716-15-15-15s-15,6.716-15,15v69.854L25.607,4.394c-5.858-5.858-15.356-5.858-21.213,0 c-5.858,5.858-5.858,15.356,0,21.213L190.919,212.133z'
