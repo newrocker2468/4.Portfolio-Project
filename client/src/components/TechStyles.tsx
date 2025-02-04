@@ -97,11 +97,23 @@ const techStyles: { [key: string]: TechStyle } = {
     textColor: "text-mysqltext dark:text-mysqltextdark",
     svg: "MysqlIcon",
   },
-  Firebase:{
+  Firebase: {
     names: ["firebase"],
     bgColor: "bg-firebasebg dark:bg-firebasebgdark",
     textColor: "text-firebasetext dark:text-firebasetextdark",
     svg: "FirebaseIcon",
+  },
+  Html: {
+    names: ["html"],
+    bgColor: "bg-[#ffdbc2] dark:bg-[#602f00]",
+    textColor: "text-[#ff6b00]",
+    svg: "HtmlIcon",
+  },
+  Css: {
+    names: ["css"],
+    bgColor: "bg-[#baf1ff] dark:bg-[#002861]",
+    textColor: "text-[#2965f1] dark:text-white",
+    svg: "CssIcon",
   },
 };
 

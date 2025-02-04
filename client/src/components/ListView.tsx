@@ -1,6 +1,7 @@
 import  { FC, useState } from "react";
 import ProjectStatus from "./ProjectStatus";
 import { Link } from "react-router-dom";
+import LazyImage from "./LazyImage";
 interface Project {
   name: string;
   status: string;
@@ -34,18 +35,20 @@ const ExtentedView: FC<ExtentedViewProps> = ({ projects }) => {
           to={`/projects/${project.name}`}
           className='dark:bg-actgrey bg-white  shadow-2xl border-paragrey dark:border-black rounded-2xl sm:w-[70%] h-auto p-5 m-5 mb-[5rem] relative overflow-hidden cursor-pointer '
           onMouseEnter={() => handleMouseEnter(index)}
-          onMouseLeave={handleMouseLeave}        >
+          onMouseLeave={handleMouseLeave}
+        >
           <ProjectStatus status={project?.status} />
           <br />
           <div className='m-2 text-center text-xl'> {project.name}</div>
           <p className='text-paragrey m-2'>{project.description}</p>
-          <div className='flex items-center justify-center'>
-            <img
+          <div className={`rounded-2xl  p-2 transition-all duration-700 ease-in-out ${
+                hoveredIndex !== index ? "translate-y-[15%]" : "translate-y-[0]"
+              } flex justify-center items-center`}
+            >
+            <LazyImage
               src={project.image}
               alt={project.name}
-              className={`rounded-2xl  p-2 transition-all duration-700 ease-in-out ${
-                hoveredIndex !== index ? "translate-y-[15%]" : "translate-y-[0]"
-              }`}
+              className={`rounded-2xl  p-2 `}
             />
           </div>
         </Link>

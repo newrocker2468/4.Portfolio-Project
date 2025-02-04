@@ -8,6 +8,7 @@ import ProjectStatus from "../components/ProjectStatus";
 import Arrow from "../icons/Arrow";
 import { useLenis } from "lenis/react";
 import EnterAnimation from "../components/EnterAnimation";
+import LazyImage from "../components/LazyImage";
 
 
 interface HomeProps {
@@ -97,13 +98,14 @@ useEffect(() => {
       >
         <div className='mt-5 flex flex-col justify-center items-center gap-2'>
           <h1 className='text-2xl'>{Project?.name}</h1>
-          <img
+          <LazyImage
             src={`/${Project?.image}`}
             alt={Project?.name}
-            width='80%'
-            height='80%'
+            width='85%'
+            height='85%'
             className='rounded-2xl'
           />
+          
         </div>
       </EnterAnimation>
       <EnterAnimation
