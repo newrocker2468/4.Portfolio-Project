@@ -21,7 +21,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
     <LazyLoadImage
       src={src}
       alt={alt}
-    //   placeholderSrc='https://via.placeholder.com/300' // Example placeholder image
+      //   placeholderSrc='https://via.placeholder.com/300' // Example placeholder image
       className={`${className} mx-auto`}
       effect='blur' // Optional effect like "blur" or "opacity"
       width={width}
@@ -30,4 +30,5 @@ const LazyImage: React.FC<LazyImageProps> = ({
   );
 };
 
-export default LazyImage;
+const MemoizedLazyImage = React.memo(LazyImage);
+export default MemoizedLazyImage;

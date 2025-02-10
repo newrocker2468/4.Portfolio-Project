@@ -3,6 +3,8 @@ import "../styles/Skills.css";
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../components/useTheme";
 import { useLenis } from "lenis/react";
+import CertificationsCard from "../components/CertificationsCard";
+import EnterAnimation from "../components/EnterAnimation";
 
 interface HomeProps {
   className?: string;
@@ -49,7 +51,7 @@ const { effectiveTheme } = useTheme();
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
-      <h1 className='text-center'>My Skills</h1>
+      <h1 className='text-center text-xl'>My Skills</h1>
       <div className='container mx-auto flex justify-center items-center'>
         {/* <ReactFlowProvider>
           <ReactFlow
@@ -65,18 +67,40 @@ const { effectiveTheme } = useTheme();
                   <MiniMap nodeColor={"grey"} nodeStrokeWidth={3} zoomable pannable />
           <Background gap={20} size={1} />
         </ReactFlowProvider> */}
-        <div className='flex justify-center flex-wrap align-top w-3/5'>
+        <div className='flex justify-center flex-wrap align-top md:w-2/3  sm:w-full min-h-72 lg:min-h-32'>
           {skills.map((skill, index) => {
             return (
-              <div
+              <EnterAnimation
+                props={{
+                  initial: { opacity: 0, y: 100, scale: 0.8 },
+                  animate: { opacity: 1, y: 0, scale: 1 },
+                  exit: { opacity: 0, y: 100, scale: 0.8 },
+                  transition: {
+                    duration: 0.1,
+                    type: "spring",
+                    damping: 20,
+                    stiffness: 100,
+                    delay: index * 0.1,
+                  },
+                }}
+                loading={Loading}
                 key={index}
-                className='mr-1 mt-1 dark:bg-white  dark:text-black bg-black text-white rounded-2xl px-3 py-1 cursor-pointer hover:dark:bg-darkwhite hover:bg-lightblack '
               >
-                {skill}
-              </div>
+                <div
+                  key={index}
+                  className='mr-1 mt-1 dark:bg-white dark:text-black bg-black text-white rounded-2xl px-3 py-1 cursor-pointer hover:dark:bg-darkwhite hover:bg-lightblack'
+                >
+                  {skill}
+                </div>
+              </EnterAnimation>
             );
           })}
         </div>
+      </div>
+
+      <div>
+        <h2 className='text-center text-xl'>Certifications</h2>
+        <CertificationsCard />
       </div>
     </>
   );

@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
 import { useLenis } from "lenis/react";
+
 interface HomeProps {
   className?: string;
   loading?: boolean;
 }
 
-const Qualifications = React.forwardRef<HTMLDivElement, HomeProps>(() => {
+const ContactMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   const { effectiveTheme } = useTheme();
   const [Loading, setLoading] = useState(true);
   const loaderRef = useRef<HTMLDivElement | null>(null);
@@ -52,4 +53,4 @@ const Qualifications = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   );
 });
 
-export default Qualifications;
+export default ContactMe;

@@ -1,7 +1,7 @@
 // src/components/TechCard.tsx
 import React from "react";
 import techStyles from "./TechStyles";
-import LazyIcon from "./LazyIcon";
+import {LazySvg} from "./UseLazyImport";
 
 interface TechCardProps {
   techName: string;
@@ -45,7 +45,7 @@ const TechCard: React.FC<TechCardProps> = ({ techName }) => {
     >
       {svg && (
         <div className='h-5 w-5 mx-1 flex justify-center items-center'>
-          <LazyIcon iconName={svg} />
+          <LazySvg name={svg} />
         </div>
       )}
       <span className='relative'>{techName}</span>

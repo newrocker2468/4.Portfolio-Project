@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Profile } from "../types/Profile";
-import DiscordLogo from "../icons/DiscordLogo";
+import DiscordLogo from "../assets/DiscordLogo";
 import BlurContainer from "./BlurComponent";
 
 interface InfoCardProps {
@@ -64,9 +64,7 @@ const InfoCard: FC<InfoCardProps> = ({
   profile,
 }) => {
   return discord ? (
-    <BlurContainer
-      className='flex items-center justify-around dark:bg-infocardbg border-[#2a2a2a] border border-solid border-1 bg-white sm:flex-col-reverse shadow-md xl:flex-row lg:flex-col-reverse rounded-2xl p-5 '
-    >
+    <BlurContainer className='flex items-center justify-around dark:bg-infocardbg border-[#2a2a2a] border border-solid border-1 bg-white sm:flex-col-reverse shadow-md xl:flex-row lg:flex-col-reverse rounded-2xl p-5 '>
       {" "}
       {profile && <DiscordProfile profile={profile} />}{" "}
     </BlurContainer>

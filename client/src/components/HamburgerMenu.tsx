@@ -1,7 +1,7 @@
 import { FC } from "react";
-import CloseIcon from "../icons/CloseIcon";
+import CloseIcon from "../assets/CloseIcon";
 import { useTheme } from "../components/useTheme";
-import {Routes} from "../data/DataArchive";
+import { Routes } from "../data/DataArchive";
 import { Link } from "react-router-dom";
 interface HamBurgerMenuProps {
   isMenuOpen: boolean;
@@ -12,7 +12,7 @@ const HamBurgerMenu: FC<HamBurgerMenuProps> = ({
   isMenuOpen,
   setIsMenuOpen,
 }) => {
-    const { effectiveTheme } = useTheme();
+  const { effectiveTheme } = useTheme();
   return (
     <>
       <div
@@ -28,23 +28,19 @@ const HamBurgerMenu: FC<HamBurgerMenuProps> = ({
         >
           <CloseIcon />
         </div>
-        <div>
-
-        </div>
+        <div></div>
         <ul className='absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2'>
-          {Routes.map((route)=>{
-                return (
-             
-                    <Link
-                      to={`${route.Route}`}
-                      onClick={() => setIsMenuOpen(false)}
-                      className='ms-5 text-xl'
-                      key={route.name}
-                    >
-                      <li>{route.name}</li>
-                    </Link>
-               
-                );
+          {Routes.map((route) => {
+            return (
+              <Link
+                to={`${route.Route}`}
+                onClick={() => setIsMenuOpen(false)}
+                className='ms-5 text-xl'
+                key={route.name}
+              >
+                <li>{route.name}</li>
+              </Link>
+            );
           })}
         </ul>
       </div>

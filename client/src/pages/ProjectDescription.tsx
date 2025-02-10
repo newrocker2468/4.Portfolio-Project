@@ -5,11 +5,10 @@ import Loader from "../components/Loader";
 import { projects } from "../data/DataArchive";
 import { Link, useParams } from "react-router-dom";
 import ProjectStatus from "../components/ProjectStatus";
-import Arrow from "../icons/Arrow";
+import Arrow from "../assets/Arrow";
 import { useLenis } from "lenis/react";
 import EnterAnimation from "../components/EnterAnimation";
 import LazyImage from "../components/LazyImage";
-
 
 interface HomeProps {
   className?: string;
@@ -20,30 +19,29 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   const { name } = useParams();
   const [Loading, setLoading] = useState(true);
   const lenis = useLenis();
-const handleLoad = React.useCallback(() => {
-  lenis?.scrollTo("top");
+  const handleLoad = React.useCallback(() => {
+    lenis?.scrollTo("top");
 
-  document.body.setAttribute("data-lenis-prevent", "true");
-  document.body.style.overflow = "hidden"; // Lock scrolling
-
-  setTimeout(() => {
-    if (loaderRef.current) {
-      loaderRef.current.style.transition = "opacity 0.5s ease-out";
-      loaderRef.current.style.opacity = "0";
-    }
+    document.body.setAttribute("data-lenis-prevent", "true");
+    document.body.style.overflow = "hidden"; // Lock scrolling
 
     setTimeout(() => {
-      setLoading(false);
-      document.body.style.overflowY = "auto"; // Unlock scrolling
-      document.body.removeAttribute("data-lenis-prevent");
-    }, 500); // Duration of the fade-out effect
-  }, 2000); // Delay before the fade-out effect starts
-}, [lenis]);
+      if (loaderRef.current) {
+        loaderRef.current.style.transition = "opacity 0.5s ease-out";
+        loaderRef.current.style.opacity = "0";
+      }
 
-useEffect(() => {
-  handleLoad();
-}, [Loading, handleLoad]);
+      setTimeout(() => {
+        setLoading(false);
+        document.body.style.overflowY = "auto"; // Unlock scrolling
+        document.body.removeAttribute("data-lenis-prevent");
+      }, 500); // Duration of the fade-out effect
+    }, 2000); // Delay before the fade-out effect starts
+  }, [lenis]);
 
+  useEffect(() => {
+    handleLoad();
+  }, [Loading, handleLoad]);
 
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const Project = projects.find((project) => project.name === name) as Project;

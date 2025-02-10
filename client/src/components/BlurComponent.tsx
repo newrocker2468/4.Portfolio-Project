@@ -34,8 +34,8 @@ const BlurContainer = ({ className, children }: BlurContainerProps) => {
         const rect = containerRef.current.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        blurRef.current.style.transform = `translate(${x - 220}px, ${
-          y - 80
+        blurRef.current.style.transform = `translate(${x - 300}px, ${
+          y - 200
         }px)`;
       }
     };

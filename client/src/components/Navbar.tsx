@@ -1,14 +1,15 @@
 import "../styles/NavBar.css";
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Arrow from "../icons/Arrow";
-import SystemIcon from "../icons/SystemIcon";
-import LinkedinIcon from "../icons/LinkedinIcon";
-import GithubIcon from "../icons/GithubIcon";
-import CoffeeIcon from "../icons/CoffeeIcon";
-import HamBurger from "../icons/HamBurgerIcon";
+import Arrow from "../assets/Arrow";
+import SystemIcon from "../assets/SystemIcon";
+import LinkedinIcon from "../assets/LinkedinIcon";
+import GithubIcon from "../assets/GithubIcon";
+import CoffeeIcon from "../assets/CoffeeIcon";
+import HamBurger from "../assets/HamBurgerIcon";
 import HamBurgerMenu from "./HamburgerMenu";
-import {Routes} from "../data/DataArchive";
+import { Routes } from "../data/DataArchive";
+
 interface NavBarProps {
   theme: string;
   effectiveTheme: string;
@@ -28,22 +29,22 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     event.preventDefault();
     setLoading(true);
     try {
-        const response = await fetch("Resume.pdf");
-        const blob = await response.blob();
-        const fileURL = window.URL.createObjectURL(blob);
-        const alink = document.createElement("a");
-        alink.href = fileURL;
-        alink.download = "Resume.pdf";
-        window.open(fileURL, "_blank");
+      const response = await fetch("Resume.pdf");
+      const blob = await response.blob();
+      const fileURL = window.URL.createObjectURL(blob);
+      const alink = document.createElement("a");
+      alink.href = fileURL;
+      alink.download = "Resume.pdf";
+      window.open(fileURL, "_blank");
     } catch (error) {
       console.error("Error fetching the PDF file:", error);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
-useEffect(() => {
-  console.log("isMenuOpen", isMenuOpen);
-}, [isMenuOpen]);
+  useEffect(() => {
+    console.log("isMenuOpen", isMenuOpen);
+  }, [isMenuOpen]);
   const links = useMemo(() => Routes, []);
 
   const [offset, setOffset] = useState({ left: 0, width: 0, height: 0 });
@@ -62,14 +63,14 @@ useEffect(() => {
         height: element.offsetHeight / rootFontSize,
       });
     }
-  }, [location.pathname,links]);
+  }, [location.pathname, links]);
 
   useEffect(() => {
     updateOffsets();
     window.addEventListener("resize", updateOffsets);
     return () => window.removeEventListener("resize", updateOffsets);
   }, [updateOffsets]);
-  
+
   return (
     <nav
       className={`flex justify-between sm:justify-around items-center my-5 z-10`}

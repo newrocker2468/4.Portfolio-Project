@@ -173,11 +173,6 @@ export const Routes = [
     name: "Home",
     Route: "/",
   },
-
-  {
-    name: "Qualifications",
-    Route: "/qualifications",
-  },
   {
     name: "Skills",
     Route: "/skills",
@@ -185,5 +180,9 @@ export const Routes = [
   {
     name: "About Me",
     Route: "/aboutme",
+  },
+  {
+    name: "ContactMe",
+    Route: "/ContactMe",
   },
 ];

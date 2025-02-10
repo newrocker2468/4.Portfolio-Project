@@ -1,0 +1,37 @@
+/* Light mode scrollbar styles */
+html.light-scrollbar body {
+  --scrollbar-track: rgb(230, 230, 230);
+  --scrollbar-thumb: rgb(150, 150, 150);
+}
+
+html.light-scrollbar body::-webkit-scrollbar {
+  width: 9px;
+}
+
+html.light-scrollbar body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html.light-scrollbar body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 20px;
+}
+
+/* Dark mode scrollbar styles */
+html.dark-scrollbar body {
+  --scrollbar-track: rgb(41, 41, 41);
+  --scrollbar-thumb: rgb(68, 68, 68);
+}
+
+html.dark-scrollbar body::-webkit-scrollbar {
+  width: 9px;
+}
+
+html.dark-scrollbar body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html.dark-scrollbar body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 20px;
+}
