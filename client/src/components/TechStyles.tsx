@@ -115,6 +115,24 @@ const techStyles: { [key: string]: TechStyle } = {
     textColor: "text-[#2965f1] dark:text-white",
     svg: "CssIcon",
   },
+  JavaScript: {
+    names: ["javascript", "js"],
+    bgColor: "bg-[#ffee80] dark:bg-[#433d12]",
+    textColor: "text-[#997a00] dark:text-[#ffdd01]",
+    svg: "JsIcon",
+  },
+  Netlify: {
+    names: ["netlify"],
+    bgColor: "bg-[#c2fffa] dark:bg-[#004d47]",
+    textColor: "text-[#00a99d] dark:text-[#00e6d6]",
+    svg: "NetlifyIcon",
+  },
+  Handlebars: {
+    names: ["handlebars"],
+    bgColor: "bg-[#ffdbb2] dark:bg-[#5e2e00]",
+    textColor: "text-[#ff6b00] dark:text-[#ff6b00]",
+    svg: "HandlebarsjsIcon",
+  },
 };
 
 export default techStyles;

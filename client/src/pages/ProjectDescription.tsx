@@ -63,20 +63,24 @@ useEffect(() => {
             animate: { opacity: 1, scale: 1 },
             exit: { opacity: 0, scale: 0.8 },
             transition: {
-              duration: 1,
+              duration: 0.1,
               type: "spring",
               damping: 10,
               stiffness: 50,
-              delay: 0.5,
             },
           }}
           loading={Loading}
         >
           <Link
             to={"/"}
-            className=' flex justify-start items-center py-1 px-3 rounded-2xl cursor-pointer hover:bg-[#313131]  transition-all duration-700 ease-in-out ml-[2rem]'
+            className=' flex justify-start items-center py-1 px-3 rounded-2xl cursor-pointer hover:bg-[#e9e9e9]  dark:hover:bg-[#313131]   ml-[2rem]'
           >
-            <Arrow w={10} h={10} rotate={135} fill={"#ffffff"} />{" "}
+            <Arrow
+              w={10}
+              h={10}
+              rotate={135}
+              fill={effectiveTheme == "dark" ? "#ffffff" : "#000000"}
+            />{" "}
             <span className='ml-[0.3rem] relative top-[-1px] '>Back</span>
           </Link>
         </EnterAnimation>
@@ -105,7 +109,6 @@ useEffect(() => {
             height='85%'
             className='rounded-2xl'
           />
-          
         </div>
       </EnterAnimation>
       <EnterAnimation
@@ -167,9 +170,7 @@ useEffect(() => {
             <span className=' text-center text-md'>My Role</span>
             <p className='dark:text-[#a3a3a3] text-md mx-4'>{Project?.role}</p>
           </div>
-          <div className='flex justify-center flex-col items-center'>
-            
-          </div>
+          <div className='flex justify-center flex-col items-center'></div>
           <div className='lg:col-span-2 flex justify-center flex-col items-center'>
             <span className='text-lg'>Project Overview</span>
             <p className='text-md dark:text-[#a3a3a3]'>

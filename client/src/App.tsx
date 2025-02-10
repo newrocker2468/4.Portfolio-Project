@@ -12,9 +12,12 @@ import ProjectDescription from "./pages/ProjectDescription";
 
 function App() {
   const { theme, toggleTheme, effectiveTheme } = useTheme();
+
   return (
     <>
-      <ReactLenis root>
+      <ReactLenis
+        root
+      >
         <NavBar
           theme={theme}
           toggleTheme={() => toggleTheme()}

@@ -71,16 +71,6 @@ export const quotes = [
 ];
 export const projects = [
   {
-    name: "Portfolio",
-    status: "Work in progress!",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A consequatur ad, omnis repellat quos dolorum corrupti cupiditate nisi ratione tenetur neque velit illum doloribus veniam excepturi earum dolorem in accusamus.",
-    image: "Corenexui2.webp",
-    technologies: ["React JS", "Tailwind CSS"],
-    github: "Testing.com",
-    website: "Testing.com",
-  },
-  {
     name: "Corenex UI",
     status: "Work in progress!",
     description:
@@ -136,7 +126,7 @@ export const projects = [
       "Heroku",
       "Unsplash API",
     ],
-    github: "https://github.com/yourusername/YelpCamp",
+    github: "https://github.com/newrocker2468/YelpCamp",
     website: "https://yelpcamp.jaskaran.dev",
     role: "Sole Developer. Built the project individually, incorporating custom middlewares and styles to enhance the functionality and aesthetics beyond the course material.",
   },
@@ -154,9 +144,27 @@ export const projects = [
       "Express.js",
       "Netlify",
     ],
-    github: "https://github.com/yourusername/SwiftResponse",
+    github: "https://github.com/newrocker2468/SwiftResponse",
     website: "https://swiftresponse.example.com",
     role: "Sole Developer. Designed and developed the front-end, focusing on creating a highly responsive and visually appealing interface with custom animations and styles.",
+  },
+  {
+    name: "Groovemade",
+    status: "Completed!",
+    description:
+      "Groovemade is an innovative and visually stunning front-end design project inspired by the Grovemade website. This project focuses on creating a highly responsive and animated user interface that enhances the user experience. It incorporates custom animations, styles, and interactions to create a captivating and engaging interface. Although it is purely a front-end project with no backend functionality, it showcases advanced front-end development skills.",
+    image: "groovemade.webp",
+    technologies: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "GSAP (GreenSock Animation Platform)",
+      "Bootstrap",
+      "Netlify",
+    ],
+    github: "https://github.com/newrocker2468/groovemade",
+    website: "https://groovemade.jaskaran.dev",
+    role: "Sole Developer. Designed and developed the front-end, focusing on creating a highly responsive and animated user interface with custom animations and styles. Utilized GSAP for smooth animations and Bootstrap for responsive design.",
   },
 ];
 
