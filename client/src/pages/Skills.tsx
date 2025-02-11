@@ -5,50 +5,15 @@ import { useTheme } from "../components/useTheme";
 import { useLenis } from "lenis/react";
 import CertificationsCard from "../components/CertificationsCard";
 import EnterAnimation from "../components/EnterAnimation";
-
+import {skills,animation} from "../data/DataArchive";
+import { FC } from "react";
 interface HomeProps {
   className?: string;
   loading?: boolean;
 }
-const animation = [
-  {
-    initial: { opacity: 0, y: 100, scale: 0.8 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    exit: { opacity: 0, y: 100, scale: 0.8 },
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-    },
-  },
-  {
-    initial: { opacity: 0, x: 100, scale: 0.8 },
-    animate: { opacity: 1, x: 0, scale: 1 },
-    exit: { opacity: 0, x: 100, scale: 0.8 },
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-    },
-  },
-  {
-    initial: { opacity: 0, y: -100, scale: 0.8 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    exit: { opacity: 0, y: 100, scale: 0.8 },
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-    },
-  },
-];
 
-const skills = ["React Js", "Node Js", "Express Js", "MongoDB", "PostgreSQL", "TypeScript", "JavaScript", "HTML", "CSS", "Bootstrap", "Jest", "Git", "GitHub", "Netlify", "Vercel", "Firebase", "REST Api", "Mapbox", "Tailwind Css", "Jwt", "Passport Js", "Nodemailer", "Shadcn", "NextUI", "EJs", "Handlebar Js", "Cloudinary", "Heroku","Unsplash API","Shadow DOM","Monaco Editor","Bash","Linux"]
 
-const Skills = React.forwardRef<HTMLDivElement,HomeProps>(() => {
+const Skills:FC<HomeProps> = (() => {
 const { effectiveTheme } = useTheme();
    const [Loading, setLoading] = useState(true);
    const loaderRef = useRef<HTMLDivElement | null>(null);
@@ -59,7 +24,6 @@ const { effectiveTheme } = useTheme();
 
     document.body.style.overflow = "hidden"; // standard no-scroll implementation
     document.body.setAttribute("data-lenis-prevent", "true");
-    // lenis?.stop();
 
     setTimeout(() => {
       if (loaderRef.current) {
@@ -88,34 +52,19 @@ const { effectiveTheme } = useTheme();
       )}
       <h1 className='text-center text-xl'>My Skills</h1>
       <div className='container mx-auto flex justify-center items-center'>
-        {/* <ReactFlowProvider>
-          <ReactFlow
-            colorMode={effectiveTheme} 
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-          />
-
-          <Controls />
-                  <MiniMap nodeColor={"grey"} nodeStrokeWidth={3} zoomable pannable />
-          <Background gap={20} size={1} />
-        </ReactFlowProvider> */}
         <div className='flex justify-center flex-wrap align-top md:w-2/3  sm:w-full min-h-72 lg:min-h-32'>
           {skills.map((skill, index) => {
-            const props1 = animation[Math.floor(Math.random() * animation.length)];
             return (
               <EnterAnimation
                 props={{
-                  ...props1,
+                  ...animation[Math.floor(Math.random() * animation.length)],
                   transition: {
-              duration: 1,
-              type: "spring",
-              damping: 20,
-              stiffness: 100,
-              delay: index* 0.1,
-            },
+                    duration: 1,
+                    type: "spring",
+                    damping: 20,
+                    stiffness: 100,
+                    delay: index * 0.1,
+                  },
                 }} // Random animation
                 loading={Loading}
                 key={index}

@@ -8,6 +8,7 @@ import { useTheme } from "../components/useTheme";
 import EnterAnimation from "../components/EnterAnimation";
 import { useLenis } from "lenis/react";
 import fetchProfile from "../middlewares/DiscordProfileFetcher";
+import { skills } from "../data/DataArchive";
 interface HomeProps {
   className?: string;
   loading?: boolean;
@@ -44,7 +45,7 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
- 
+
   useEffect(() => {
     fetchProfile(setProfile);
   }, []);
@@ -57,8 +58,8 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
-      <h1 className='text-center'>My DashBoard</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden'>
+      <h1 className='text-center text-xl'>Little About Me</h1>
+      {/* <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden'>
         <EnterAnimation 
           props={{
             initial: { opacity: 0, y: -100 },
@@ -128,6 +129,19 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           {" "}
           <InfoCard discord={true} profile={Profile} />
         </EnterAnimation>
+      </div> */}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden '>
+        <section>
+          <img
+            src={`${Profile?.avatar}`}
+            alt=''
+            className='rounded-full w-2/4'
+          />
+        </section>
+        <section className='grid grid-cols-2 gap-1'>
+          <div>
+          </div>
+        </section>
       </div>
     </>
   );

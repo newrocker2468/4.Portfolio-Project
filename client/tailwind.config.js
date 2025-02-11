@@ -2,8 +2,8 @@ const { default: react } = require("@vitejs/plugin-react-swc");
 
 // tailwind.config.js
 module.exports = {
-  darkMode: "class", // Ensures dark mode based on a class
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class"], // Ensures dark mode based on a class
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
       textShadow: {
@@ -11,7 +11,7 @@ module.exports = {
       },
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
-        robotoFlex: ['"Roboto Flex"', "sans-serif"],
+        robotoFlex: ['Roboto Flex"', "sans-serif"],
       },
       colors: {
         grey: "#e8e8e8",
@@ -79,6 +79,11 @@ module.exports = {
         firebasetext: "#d98d00",
         firebasetextdark: "#ffc100",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
   variants: {
@@ -97,5 +102,6 @@ module.exports = {
       };
       addUtilities(newUtilities, ["responsive", "hover"]);
     },
+    require("tailwindcss-animate"),
   ],
 };

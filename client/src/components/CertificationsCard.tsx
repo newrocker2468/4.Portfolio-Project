@@ -51,7 +51,7 @@ const CertificationsCard = () => {
       {certifications.map((certification, index) => (
         <div
           key={index}
-          className='dark:border-gray-800 border border-gray-200 shadow-lg rounded-2xl p-6 m-4 transition-transform transform hover:scale-105 hover:shadow-xl whiteshadow'
+          className='dark:border-gray-800 border border-gray-200 shadow-lg rounded-2xl p-6 m-4 transition-transform transform hover:scale-105 hover:shadow-xl '
         >
           <h2 className='text-lg font-semibold mb-4 dark:text-white text-gray-800'>
             {certification.title}
