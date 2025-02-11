@@ -10,6 +10,41 @@ interface HomeProps {
   className?: string;
   loading?: boolean;
 }
+const animation = [
+  {
+    initial: { opacity: 0, y: 100, scale: 0.8 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: 100, scale: 0.8 },
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+  {
+    initial: { opacity: 0, x: 100, scale: 0.8 },
+    animate: { opacity: 1, x: 0, scale: 1 },
+    exit: { opacity: 0, x: 100, scale: 0.8 },
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+  {
+    initial: { opacity: 0, y: -100, scale: 0.8 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: 100, scale: 0.8 },
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+];
 
 const skills = ["React Js", "Node Js", "Express Js", "MongoDB", "PostgreSQL", "TypeScript", "JavaScript", "HTML", "CSS", "Bootstrap", "Jest", "Git", "GitHub", "Netlify", "Vercel", "Firebase", "REST Api", "Mapbox", "Tailwind Css", "Jwt", "Passport Js", "Nodemailer", "Shadcn", "NextUI", "EJs", "Handlebar Js", "Cloudinary", "Heroku","Unsplash API","Shadow DOM","Monaco Editor","Bash","Linux"]
 
@@ -69,20 +104,19 @@ const { effectiveTheme } = useTheme();
         </ReactFlowProvider> */}
         <div className='flex justify-center flex-wrap align-top md:w-2/3  sm:w-full min-h-72 lg:min-h-32'>
           {skills.map((skill, index) => {
+            const props1 = animation[Math.floor(Math.random() * animation.length)];
             return (
               <EnterAnimation
                 props={{
-                  initial: { opacity: 0, y: 100, scale: 0.8 },
-                  animate: { opacity: 1, y: 0, scale: 1 },
-                  exit: { opacity: 0, y: 100, scale: 0.8 },
+                  ...props1,
                   transition: {
-                    duration: 0.1,
-                    type: "spring",
-                    damping: 20,
-                    stiffness: 100,
-                    delay: index * 0.1,
-                  },
-                }}
+              duration: 1,
+              type: "spring",
+              damping: 20,
+              stiffness: 100,
+              delay: index* 0.1,
+            },
+                }} // Random animation
                 loading={Loading}
                 key={index}
               >
