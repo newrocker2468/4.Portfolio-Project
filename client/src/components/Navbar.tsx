@@ -72,12 +72,9 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
   }, [updateOffsets]);
 
   return (
-    <nav
-      className={`flex justify-between sm:justify-around items-center my-5 z-10`}
-    >
-      <div className='flex items-center sm:gap-0 md:gap-[1rem] z-10 ml-5 sm:ml-0 '>
-        {/* {theme === "system" ? "System" : theme === "light" ? "Light" : "Dark"} */}
-        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl cursor-pointer border-2 border-transparent  active:border-black dark:active:border-white z-10'>
+    <nav className='flex justify-between sm:justify-around items-center my-5 z-10 sticky top-0 w-full bg-black bg-opacity-50'>
+      <div className='flex items-center sm:gap-0 md:gap-[1rem] z-10 ml-5 sm:ml-0'>
+        <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-gray-200 dark:hover:bg-gray-800 p-2 rounded-2xl cursor-pointer border-2 border-transparent active:border-black dark:active:border-white z-10'>
           {theme === "system" ? (
             <SystemIcon
               effectiveTheme={effectiveTheme}
@@ -112,18 +109,17 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
       </div>
 
       <div className='relative sm:flex justify-center items-center h-16 z-10 hidden'>
-        <ul className='relative flex z-10 justify-around gap-4 border-2 dark:border-navborder border-grey bg-opacity-20 overflow-hidden  rounded-3xl'>
-          {" "}
+        <ul className='relative flex z-10 justify-around gap-4 border-2 dark:border-gray-700 border-gray-300 bg-opacity-20 overflow-hidden rounded-3xl'>
           {location.pathname ==
             links.find((link) => link.Route == location.pathname)?.Route && (
             <>
               <div
-                className={` z-10 absolute top-0 bottom-0 left-0 bg-black dark:text-black  dark:bg-white  w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-1px before:right-[47%] before:w-2.5  before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full`}
+                className={`z-10 absolute top-0 bottom-0 left-0 bg-black dark:text-black dark:bg-white w-20 h-full rounded-2xl transition-transform duration-500 ease-in-out before:content-[""] before:absolute before:top-[1px] before:right-[47%] before:w-[2.5px] before:h-[0.25rem] before:dark:bg-black before:bg-white before:rounded-full`}
                 style={{
                   transform: `translateX(${offset.left}rem)`,
                   width: `${offset.width}rem`,
                 }}
-              ></div>{" "}
+              ></div>
             </>
           )}
           {links.map((link, index) => (
@@ -134,44 +130,44 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
                 location.pathname === link.Route
                   ? "text-white dark:text-black"
                   : "dark:text-white text-black hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white"
-              } relative py-2 rounded-2xl cursor-pointer  transition-all duration-300 ease-in-out z-10`}
+              } relative py-2 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out z-10`}
             >
               <Link to={link.Route} className='relative z-10 py-2 px-2 lg:px-4'>
                 {link.name}
               </Link>
             </li>
           ))}
-        </ul>{" "}
+        </ul>
       </div>
 
       <div className='flex justify-around items-center z-10 gap-2'>
         <Link
           to='https://buymeacoffee.com/jaskaransingh'
-          className='lg:flex justify-center items-center hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white hidden'
+          className='lg:flex justify-center items-center hover:bg-gray-200 dark:hover:bg-gray-800 p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white hidden'
         >
           <CoffeeIcon />
         </Link>
         <Link
           to='https://www.linkedin.com/in/jaskaransc'
-          className='md:flex justify-center items-center z-10 hover:bg-darkwhite dark:hover:bg-lightblack p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white hidden'
+          className='md:flex justify-center items-center z-10 hover:bg-gray-200 dark:hover:bg-gray-800 p-2 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white hidden'
         >
           <LinkedinIcon />
         </Link>
         <Link
           to='https://github.com/newrocker2468'
-          className='hover:bg-darkwhite dark:hover:bg-lightblack p-2 z-10 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent  active:border-black dark:active:border-white hidden lg:flex'
+          className='hover:bg-gray-200 dark:hover:bg-gray-800 p-2 z-10 rounded-2xl transition duration-200 ease-in-out border-2 border-transparent active:border-black dark:active:border-white hidden lg:flex'
         >
           <GithubIcon />
         </Link>
         <a
-          className={`link bg-black dark:bg-white z-10 dark:text-black text-white dark:hover:bg-grey rounded-2xl hidden sm:flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
+          className={`link bg-black dark:bg-white z-10 dark:text-black text-white dark:hover:bg-gray-300 rounded-2xl hidden sm:flex justify-center items-center transition-all duration-1000 ease-in-out active:scale-95 cursor-pointer ${
             loading ? "ml-[1rem] px-1 py-1 " : "px-3 py-1"
           }`}
           onClick={onButtonClick}
         >
           {loading ? (
             <svg
-              className='animate-spin h-5 w-5 my-1 mx-2 z-10 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out '
+              className='animate-spin h-5 w-5 my-1 mx-2 z-10 border-[3.5px] border-t-transparent dark:border-black border-white rounded-full transition-all duration-1000 ease-in-out'
               viewBox='0 0 24 24'
             ></svg>
           ) : (

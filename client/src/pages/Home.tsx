@@ -67,6 +67,8 @@ const Home: FC<HomeProps> = ({ className }) => {
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
+      <div className='blue-blurred'></div>
+      <div className='pink-patch'></div>
 
       <main className={`dark:text-white ${className}`}>
         {/* <EnterAnimation
@@ -83,11 +85,11 @@ const Home: FC<HomeProps> = ({ className }) => {
           }}
           loading={Loading}
         > */}
-          <div className='flex items-center justify-center m-5 text-center text-4xl text-shadow-custom'>
-            <h1 className='mx-10 md:mx-20 lg:mx-70 xl:mx-80'>
-              {quote.quote} - {quote.author}
-            </h1>
-          </div>
+        <div className='flex items-center justify-center m-5 text-center text-4xl text-shadow-custom'>
+          <h1 className='mx-10 md:mx-20 lg:mx-70 xl:mx-80'>
+            {quote.quote} - {quote.author}
+          </h1>
+        </div>
         {/* </EnterAnimation> */}
         <EnterAnimation
           props={{

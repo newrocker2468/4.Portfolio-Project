@@ -83,7 +83,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           </Link>
         </EnterAnimation>
       </div>
-      <EnterAnimation
+      {/* <EnterAnimation
         props={{
           initial: { opacity: 0, scale: 0.8 },
           animate: { opacity: 1, scale: 1 },
@@ -97,7 +97,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           },
         }}
         loading={Loading}
-      >
+      > */}
         <div className='mt-5 flex flex-col justify-center items-center gap-2'>
           <h1 className='text-2xl'>{Project?.name}</h1>
           <LazyImage
@@ -108,7 +108,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
             className='rounded-2xl'
           />
         </div>
-      </EnterAnimation>
+      {/* </EnterAnimation> */}
       <EnterAnimation
         props={{
           initial: { opacity: 0, scale: 0.8 },

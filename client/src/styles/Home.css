@@ -1,4 +1,3 @@
-/* styles.css */
 .fade-enter, .fade-exit-active {
   opacity: 0;
 }
@@ -6,4 +5,26 @@
 .fade-enter-active, .fade-exit {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+
+.blue-blurred {
+    background-color: rgba(255, 255, 255, 0.1); /* White color with some transparency */
+    filter: blur(100px);
+    border-radius: 50%; /* Adjust the blur radius as needed */
+    width: 500px; /* Set a width for the patch */
+    height: 200px; /* Set a height for the patch */
+    position: fixed; /* Positioning to overlap elements */
+    top: 20px; /* Adjust position as needed */
+    left: 25%; /* Adjust position as needed */
+}
+
+.pink-patch {
+    background-color: rgba(0, 0, 0, 0.1); /* Black color with some transparency */
+    filter: blur(100px);
+    border-radius: 50%; /* Adjust the blur radius as needed */
+    width: 500px; /* Set a width for the patch */
+    height: 200px; /* Set a height for the patch */
+    position: fixed; /* Positioning to overlap elements */
+    bottom: 20px; /* Adjust position as needed */
+    right: 25%; /* Adjust position as needed */
 }

@@ -35,7 +35,7 @@ const HamBurgerMenu: FC<HamBurgerMenuProps> = ({
               <Link
                 to={`${route.Route}`}
                 onClick={() => setIsMenuOpen(false)}
-                className='ms-5 text-xl'
+                className={`ms-5 text-xl ${effectiveTheme == "dark" ? "text-white" : "text-black"}`}
                 key={route.name}
               >
                 <li>{route.name}</li>

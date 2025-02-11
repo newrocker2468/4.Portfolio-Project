@@ -51,7 +51,7 @@ const { effectiveTheme } = useTheme();
         />
       )}
       <h1 className='text-center text-xl'>My Skills</h1>
-      <div className='container mx-auto flex justify-center items-center'>
+      <div className='container mx-auto flex justify-center items-center mb-10'>
         <div className='flex justify-center flex-wrap align-top md:w-2/3  sm:w-full min-h-72 lg:min-h-32'>
           {skills.map((skill, index) => {
             return (
