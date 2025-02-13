@@ -38,7 +38,7 @@ const ContactMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
     handleLoad();
   }, [handleLoad]);
   return (
-    <>
+    <div className="min-h-[70dvh]">
       {Loading && (
         <Loader
           ref={loaderRef}
@@ -49,7 +49,7 @@ const ContactMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
       <div className='flex justify-center items-center'>
         <h2>Education</h2>
       </div>
-    </>
+    </div>
   );
 });
 

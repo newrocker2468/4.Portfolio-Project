@@ -10,7 +10,8 @@ import AboutMe from "./pages/AboutMe";
 import { ReactLenis } from "lenis/react";
 import ProjectDescription from "./pages/ProjectDescription";
 import ContactMe from "./pages/ContactMe";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const { theme, toggleTheme, effectiveTheme } = useTheme();
@@ -96,13 +97,14 @@ function App() {
           effectiveTheme={effectiveTheme}
         />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home/>} />
           <Route path='/aboutme' element={<AboutMe />} />
           <Route path='/ContactMe' element={<ContactMe />} />
           <Route path='/skills' element={<Skills />} />
           <Route path='/projects/:name' element={<ProjectDescription />} />
           <Route path='*' element={"Not Found"} />
         </Routes>
+        <Footer />
       </ReactLenis>
     </>
   );

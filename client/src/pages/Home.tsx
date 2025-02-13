@@ -70,7 +70,7 @@ const Home: FC<HomeProps> = ({ className }) => {
       <div className='blue-blurred'></div>
       <div className='pink-patch'></div>
 
-      <main className={`dark:text-white ${className}`}>
+      <main className={`dark:text-white ${className} min-h-dvh`}>
         {/* <EnterAnimation
           props={{
             initial: { opacity: 0, y: -100 },

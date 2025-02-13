@@ -47,7 +47,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   const Project = projects.find((project) => project.name === name) as Project;
   const { effectiveTheme } = useTheme();
   return (
-    <>
+    <div className="min-h-dvh">
       {Loading && (
         <Loader
           ref={loaderRef}
@@ -177,7 +177,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           </div>
         </div>
       </EnterAnimation>
-    </>
+    </div>
   );
 });
 export default ProjectDescription;

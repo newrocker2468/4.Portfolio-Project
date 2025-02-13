@@ -9,6 +9,8 @@ import CoffeeIcon from "../assets/CoffeeIcon";
 import HamBurger from "../assets/HamBurgerIcon";
 import HamBurgerMenu from "./HamburgerMenu";
 import { Routes } from "../data/DataArchive";
+import JSConfetti from "js-confetti";
+
 
 interface NavBarProps {
   theme: string;
@@ -17,10 +19,26 @@ interface NavBarProps {
 }
 
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
+   const canvas = document.getElementById("#root");
+   const jsConfetti = new JSConfetti({ canvas: canvas as HTMLCanvasElement });
+
+
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [, setSelectedRoute] = useState(location.pathname);
+  const [isAtTop, setIsAtTop] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY === 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const navRefs = useRef<(HTMLLIElement | null)[]>([]);
   useEffect(() => {
     setSelectedRoute(location.pathname);
@@ -71,8 +89,22 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     return () => window.removeEventListener("resize", updateOffsets);
   }, [updateOffsets]);
 
+  
+
+ const handleconfetti = () => {
+jsConfetti.addConfetti({
+  confettiColors: [`${effectiveTheme == "dark" ? "grey" : "black"}`],
+  confettiRadius: 6,
+  confettiNumber: 500,
+});
+// jsConfetti.clearCanvas();
+ };
   return (
-    <nav className='flex justify-between sm:justify-around items-center my-5 z-10 sticky top-0 w-full bg-black bg-opacity-50'>
+    <nav
+      className={`${
+        isAtTop ? "bg-transparent" : " dark:bg-black bg-white"
+      } flex justify-between sm:justify-around items-center py-1 z-10 sticky top-0 w-full `}
+    >
       <div className='flex items-center sm:gap-0 md:gap-[1rem] z-10 ml-5 sm:ml-0'>
         <div className='flex justify-between flex-row items-center m-[0.5rem] hover:bg-gray-200 dark:hover:bg-gray-800 p-2 rounded-2xl cursor-pointer border-2 border-transparent active:border-black dark:active:border-white z-10'>
           {theme === "system" ? (
@@ -102,7 +134,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </div>
         <div className='flex justify-center flex-col z-10'>
           <span className='font-medium z-10'>
-            <Link to='/'>Jaskaran Singh</Link>
+            <span onClick={handleconfetti} className="cursor-pointer">Jaskaran Singh</span>
           </span>
           <span className='text-gray-400 z-10'>Full Stack Dev</span>
         </div>

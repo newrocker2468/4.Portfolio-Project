@@ -51,7 +51,7 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   }, []);
 
   return (
-    <>
+    <div className='min-h-[70dvh]'>
       {Loading && (
         <Loader
           ref={loaderRef}
@@ -59,8 +59,8 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
         />
       )}
       <h1 className='text-center text-xl'>Little About Me</h1>
-      {/* <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden'>
-        <EnterAnimation 
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden'>
+        <EnterAnimation
           props={{
             initial: { opacity: 0, y: -100 },
             animate: { opacity: 1, y: 0 },
@@ -129,8 +129,8 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           {" "}
           <InfoCard discord={true} profile={Profile} />
         </EnterAnimation>
-      </div> */}
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden '>
+      </div>
+      {/* <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden '>
         <section>
           <img
             src={`${Profile?.avatar}`}
@@ -139,11 +139,10 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           />
         </section>
         <section className='grid grid-cols-2 gap-1'>
-          <div>
-          </div>
+          <div></div>
         </section>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 });
 export default AboutMe;

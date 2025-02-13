@@ -43,7 +43,7 @@ const { effectiveTheme } = useTheme();
     handleLoad();
   }, [handleLoad]);
   return (
-    <>
+    <div className="min-h-dvh">
       {Loading && (
         <Loader
           ref={loaderRef}
@@ -85,7 +85,7 @@ const { effectiveTheme } = useTheme();
         <h2 className='text-center text-xl'>Certifications</h2>
         <CertificationsCard />
       </div>
-    </>
+    </div>
   );
 });
 
