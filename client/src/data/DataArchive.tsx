@@ -144,8 +144,8 @@ export const projects = [
       "Express.js",
       "Netlify",
     ],
-    github: "https://github.com/newrocker2468/SwiftResponse",
-    website: "https://swiftresponse.example.com",
+    github: "https://github.com/newrocker2468/Swift_Response",
+    website: "https://jaskaran.dev/SwiftResponse",
     role: "Sole Developer. Designed and developed the front-end, focusing on creating a highly responsive and visually appealing interface with custom animations and styles.",
   },
   {

@@ -140,7 +140,7 @@ const ProjectDescription = React.forwardRef<HTMLDivElement, HomeProps>(() => {
             <span className='mt-5  font-nunito'>Github - Source Code</span>
             <a
               href={`${Project?.github}`}
-              // target='_blank'
+              target='_blank'
               className={`dark:text-[#a3a3a3] text-center ${
                 Project.status == "Work in progress!"
                   ? "dark:hover:text-[#ffc400]"

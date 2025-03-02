@@ -10,7 +10,7 @@ import AboutMe from "./pages/AboutMe";
 import { ReactLenis } from "lenis/react";
 import ProjectDescription from "./pages/ProjectDescription";
 import ContactMe from "./pages/ContactMe";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import Footer from "./components/Footer";
 
 function App() {

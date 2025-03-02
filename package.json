@@ -1,0 +1,12 @@
+{
+  "name": "root-project",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "server": "cd server && nodemon",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

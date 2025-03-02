@@ -1,14 +1,14 @@
-import InfoCard from "../components/InfoCard";
-import InfiniteTimer from "../components/InfiniteTimer";
+
+// import InfiniteTimer from "../components/InfiniteTimer";
 import { useEffect, useRef, useState } from "react";
 import { Profile } from "../types/Profile";
 import React from "react";
 import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
-import EnterAnimation from "../components/EnterAnimation";
+// import EnterAnimation from "../components/EnterAnimation";
+import Signature from "@/assets/signature";
 import { useLenis } from "lenis/react";
 import fetchProfile from "../middlewares/DiscordProfileFetcher";
-import { skills } from "../data/DataArchive";
 interface HomeProps {
   className?: string;
   loading?: boolean;
@@ -58,90 +58,57 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
-      <h1 className='text-center text-xl'>Little About Me</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden'>
-        <EnterAnimation
-          props={{
-            initial: { opacity: 0, y: -100 },
-            animate: { opacity: 1, y: 0 },
-            exit: { opacity: 0, y: -100 },
-            transition: {
-              duration: 1.2,
-              type: "spring",
-              damping: 20,
-              stiffness: 100,
-              delay: 0.2,
-            },
-          }}
-          loading={Loading}
-        >
-          <InfoCard title={"My Age"} desc={<InfiniteTimer />} />
-        </EnterAnimation>
-        <EnterAnimation
-          props={{
-            initial: { opacity: 0, y: -100 },
-            animate: { opacity: 1, y: 0 },
-            exit: { opacity: 0, y: -100 },
-            transition: {
-              duration: 1.2,
-              type: "spring",
-              damping: 20,
-              stiffness: 100,
-              delay: 0.2,
-            },
-          }}
-          loading={Loading}
-        >
-          <InfoCard title={"My Age"} desc={"21"} />
-        </EnterAnimation>
-        <EnterAnimation
-          props={{
-            initial: { opacity: 0, y: 100 },
-            animate: { opacity: 1, y: 0 },
-            exit: { opacity: 0, y: 100 },
-            transition: {
-              duration: 1.4,
-              type: "spring",
-              damping: 20,
-              stiffness: 100,
-              delay: 0.3,
-            },
-          }}
-          loading={Loading}
-        >
-          <InfoCard title={"My Age"} desc={"21"} />
-        </EnterAnimation>
-        <EnterAnimation
-          props={{
-            initial: { opacity: 0, y: 100 },
-            animate: { opacity: 1, y: 0 },
-            exit: { opacity: 0, y: 100 },
-            transition: {
-              duration: 1.4,
-              type: "spring",
-              damping: 20,
-              stiffness: 100,
-              delay: 0.3,
-            },
-          }}
-          loading={Loading}
-        >
-          {" "}
-          <InfoCard discord={true} profile={Profile} />
-        </EnterAnimation>
+      <div className='text-center my-3'>
+        <h1 className=' text-3xl text-shadow-custom mb-2'>
+          "The best way to predict the future is to create it—one line of code
+          at a time."
+        </h1>
+        <span className='text-paragrey text-shadow-custom'>
+          Based in Melbourne,Australia
+        </span>
       </div>
-      {/* <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-[2rem] justify-center items-center lg:mx-72 md:mx-20 overflow-hidden '>
-        <section>
+      <div className='grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-2 place-items-center'>
+        <div className='w-full flex justify-center items-center overflow-hidden'>
           <img
-            src={`${Profile?.avatar}`}
+            src='ProfilePic.webp'
             alt=''
-            className='rounded-full w-2/4'
+            className='h-[30rem] w-[20rem] rounded-3xl object-cover '
           />
-        </section>
-        <section className='grid grid-cols-2 gap-1'>
-          <div></div>
-        </section>
-      </div> */}
+        </div>
+
+        <div className='text-start mx-20 '>
+          <span className=''>Background</span>
+          <p className='text-paragrey'>
+            I am a Full Stack Developer with a Bachelor's degree in Computer
+            Applications, currently pursuing my Master's in Information
+            Technology at the Royal Melbourne Institute of Technology (RMIT)
+            University. I love connecting with fellow tech enthusiasts and
+            professionals. If you've found value in my work or have a shared
+            passion for technology, let's connect on LinkedIn or Twitter. I'm
+            always eager to exchange ideas, collaborate on projects, and learn
+            from others in the field.
+          </p>
+
+          <p className='text-paragrey mt-3'>
+            Additionally, for potential employers, I bring a combination of
+            technical proficiency, problem-solving skills, and a collaborative
+            mindset to every project. My experience spans both front-end and
+            back-end development, and I thrive in dynamic environments where I
+            can contribute to innovative solutions and impactful products. I'm
+            currently seeking new opportunities in software development, so
+            please don't hesitate to reach out if you think I'd be a good fit
+            for your team.
+          </p>
+
+
+          <div className="flex justify-center items-center mt-4 ">
+            <span className="flex justify-center items-center flex-col">
+              <span className='text-paragrey mb-2'>Thanks for stopping by!</span>
+            <Signature width='20rem' height='5rem' />
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 });
