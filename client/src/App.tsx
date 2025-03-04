@@ -79,8 +79,8 @@ function App() {
        {
         description: `${quote}`,
         action: {
-          label: "Undo",
-          onClick: () => console.log("Undo"),
+          label: "Dismiss",
+          onClick: () => console.log(""),
         },
         style: getToastStyles(theme),
       }

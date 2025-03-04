@@ -9,7 +9,7 @@ const certifications = [
     url: "https://www.udemy.com/certificate/UC-29bdea29-1c68-4d51-9c73-9078f1bc902e",
     description:
       "A comprehensive course covering all aspects of web development.",
-    learned: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB"],
+    learned: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB", "React", "Bootstrap","Cloudinary","MapBox"],
   },
   {
     title: "Introduction to Front-End Development",
@@ -90,17 +90,17 @@ const certifications = [
 const CertificationsCard = () => {
   const {effectiveTheme} = useTheme();
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 '>
       {certifications.map((certification, index) => (
         <div
           className={`${
             effectiveTheme == "dark"
               ? "bg-black text-white "
               : "bg-white text-black "
-          } rounded-2xl p-6 m-4 transition-transform transform hover:scale-105 hover:shadow-xl shadow-xl border border-grey dark:border-gray-800`}
+          } rounded-2xl p-6 m-4 transition-transform transform hover:scale-105 hover:shadow-xl shadow-xl border border-grey dark:border-gray-800 flex flex-col justify-around items-start`}
           key={index}
         >
-          <div className='flex'>
+          <div className='flex justify-between w-full'>
             <div className='flex flex-col w-[60%] gap-1'>
               <h2 className='text-lg font-semibold '>{certification.title}</h2>
               <span className='text-paragrey'>{certification.issuer}</span>
@@ -108,7 +108,7 @@ const CertificationsCard = () => {
 
             <div className='w-2/6 flex items-center justify-center'>
               <div className='flex items-center justify-end ml-3'>
-                <span className='text-paragrey'>Logo</span>
+                {/* <span className='text-paragrey'>Logo</span> */}
               </div>
             </div>
           </div>
@@ -120,8 +120,39 @@ const CertificationsCard = () => {
                 Issued : {certification.issueDate}
               </span>
             </div>
-            {certification.description}
+            <div className='flex flex-wrap gap-1 my-2 '>
+              {certification.learned.map((skill, index) => {
+                return (
+                  <span
+                    key={index}
+                    className={`text-xs ${
+                      effectiveTheme == "dark"
+                        ? "bg-white text-black"
+                        : "bg-black text-white"
+                    } rounded-2xl px-2 py-1 cursor-pointer hover:bg-gray-200 hover:text-black transition-colors mx-[0.1rem]`}
+                  >
+                    {skill}
+                  </span>
+                );
+              })}
+              <p>{certification.description}</p>
+            </div>
+
           </div>
+            <div className='my-2'>
+              <a
+                href={certification.url}
+                className={`${
+                  effectiveTheme == "dark"
+                    ? "bg-white text-black"
+                    : "bg-black text-white"
+                } rounded-xl px-2 py-1 text-md mt-3 cursor-pointer hover:bg-gray-200 hover:text-black transition-colors max-w-[8rem]`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                View Certificate
+              </a>
+            </div>
         </div>
       ))}
     </div>

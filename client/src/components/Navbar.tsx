@@ -60,9 +60,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    console.log("isMenuOpen", isMenuOpen);
-  }, [isMenuOpen]);
+
   const links = useMemo(() => Routes, []);
 
   const [offset, setOffset] = useState({ left: 0, width: 0, height: 0 });
