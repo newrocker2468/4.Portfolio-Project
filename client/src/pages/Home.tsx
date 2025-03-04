@@ -67,8 +67,7 @@ const Home: FC<HomeProps> = ({ className }) => {
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
-      <div className='blue-blurred'></div>
-      <div className='pink-patch'></div>
+
 
       <main className={`dark:text-white ${className} min-h-dvh`}>
         {/* <EnterAnimation

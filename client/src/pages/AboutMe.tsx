@@ -6,7 +6,7 @@ import React from "react";
 import Loader from "../components/Loader";
 import { useTheme } from "../components/useTheme";
 // import EnterAnimation from "../components/EnterAnimation";
-import Signature from "@/assets/signature";
+import Signature from "@/assets/Signature";
 import { useLenis } from "lenis/react";
 import fetchProfile from "../middlewares/DiscordProfileFetcher";
 interface HomeProps {
