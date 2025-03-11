@@ -222,6 +222,7 @@ export const skills = [
   "Monaco Editor",
   "Bash",
   "Linux",
+  "Formik",
 ];
 export const animation = [
   {

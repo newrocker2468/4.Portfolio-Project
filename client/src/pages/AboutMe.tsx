@@ -15,7 +15,7 @@ interface HomeProps {
 }
 
 const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
-  const [Profile, setProfile] = useState<Profile | undefined>(undefined);
+  const [, setProfile] = useState<Profile | undefined>(undefined);
   const [Loading, setLoading] = useState(true);
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const { effectiveTheme } = useTheme();
@@ -60,11 +60,11 @@ const AboutMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
       )}
       <div className='text-center my-3'>
         <h1 className=' text-3xl text-shadow-custom mb-2'>
-          "The best way to predict the future is to create it—one line of code
+          "The best way to predict the future is to create it - one line of code
           at a time."
         </h1>
         <span className='text-paragrey text-shadow-custom'>
-          Based in Melbourne,Australia
+          Based in Melbourne, Australia
         </span>
       </div>
       <div className='grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-2 place-items-center'>

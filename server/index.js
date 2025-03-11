@@ -2,7 +2,18 @@ require("dotenv").config();
 const express = require("express");
 const { Client, GatewayIntentBits } = require("discord.js");
 const cors = require("cors");
+const sendMail = require("./SendMail");
+const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
 const app = express();
+
+
+
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const botToken = `${process.env.BOT_TOKEN}`;
@@ -24,6 +35,7 @@ client.once("ready", () => {
 
     userProfile = {
       id: user.id,
+      
       username: user.username,
       discriminator: user.discriminator,
       avatar: user.displayAvatarURL(),
@@ -31,7 +43,7 @@ client.once("ready", () => {
       globalname: user.tag,
 
     };
-    console.log(userProfile);
+    // console.log(userProfile);
   });
 });
 
@@ -69,6 +81,12 @@ app.get("/health", (req, res) => {
   res.send("Server is up and running");
 })
 
+app.post("/sendmail", (req, res) => {
+  console.log(req.body);
+  sendMail(req.body);
+  res.send("Mail sent");
+
+});
 
 app.listen(3000, () => {
   console.log("App is running on port 3000");
