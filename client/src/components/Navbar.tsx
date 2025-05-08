@@ -1,4 +1,4 @@
-import "/styles/NavBar.css";
+import "../styles/NavBar.css";
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Arrow from "../assets/Arrow";
@@ -11,6 +11,7 @@ import HamBurgerMenu from "./HamburgerMenu";
 import { Routes } from "../data/DataArchive";
 import JSConfetti from "js-confetti";
 
+
 interface NavBarProps {
   theme: string;
   effectiveTheme: string;
@@ -18,8 +19,9 @@ interface NavBarProps {
 }
 
 const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
-  const canvas = document.getElementById("#root");
-  const jsConfetti = new JSConfetti({ canvas: canvas as HTMLCanvasElement });
+   const canvas = document.getElementById("#root");
+   const jsConfetti = new JSConfetti({ canvas: canvas as HTMLCanvasElement });
+
 
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -85,14 +87,16 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
     return () => window.removeEventListener("resize", updateOffsets);
   }, [updateOffsets]);
 
-  const handleconfetti = () => {
-    jsConfetti.addConfetti({
-      confettiColors: [`${effectiveTheme == "dark" ? "grey" : "black"}`],
-      confettiRadius: 6,
-      confettiNumber: 500,
-    });
-    // jsConfetti.clearCanvas();
-  };
+  
+
+ const handleconfetti = () => {
+jsConfetti.addConfetti({
+  confettiColors: [`${effectiveTheme == "dark" ? "grey" : "black"}`],
+  confettiRadius: 6,
+  confettiNumber: 500,
+});
+// jsConfetti.clearCanvas();
+ };
   return (
     <nav
       className={`${
@@ -128,9 +132,7 @@ const NavBar: FC<NavBarProps> = ({ theme, toggleTheme, effectiveTheme }) => {
         </div>
         <div className='flex justify-center flex-col z-10'>
           <span className='font-medium z-10'>
-            <span onClick={handleconfetti} className='cursor-pointer'>
-              Jaskaran Singh
-            </span>
+            <span onClick={handleconfetti} className="cursor-pointer">Jaskaran Singh</span>
           </span>
           <span className='text-gray-400 z-10'>Full Stack Dev</span>
         </div>

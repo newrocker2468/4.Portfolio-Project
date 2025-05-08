@@ -4,7 +4,7 @@ import ListView from "../components/ListView";
 import GridView from "../components/GridView";
 import Switcher from "../components/Switcher";
 import { useTheme } from "../components/useTheme";
-import "/styles/Home.css";
+import "../styles/Home.css";
 import Loader from "../components/Loader";
 import { quotes, projects } from "../data/DataArchive";
 import { useLenis } from "lenis/react";
@@ -57,6 +57,8 @@ const Home: FC<HomeProps> = ({ className }) => {
     handleLoad();
   }, [handleLoad]);
 
+
+
   return (
     <>
       {Loading && (
@@ -65,6 +67,7 @@ const Home: FC<HomeProps> = ({ className }) => {
           className={effectiveTheme === "dark" ? "bg-black" : "bg-white"}
         />
       )}
+
 
       <main className={`dark:text-white ${className} min-h-dvh`}>
         {/* <EnterAnimation

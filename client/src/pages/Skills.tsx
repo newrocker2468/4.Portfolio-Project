@@ -1,22 +1,23 @@
 import Loader from "../components/Loader";
-import "/styles/Skills.css";
+import "../styles/Skills.css";
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../components/useTheme";
 import { useLenis } from "lenis/react";
 import CertificationsCard from "../components/CertificationsCard";
 import EnterAnimation from "../components/EnterAnimation";
-import { skills, animation } from "../data/DataArchive";
+import {skills,animation} from "../data/DataArchive";
 import { FC } from "react";
 interface HomeProps {
   className?: string;
   loading?: boolean;
 }
 
-const Skills: FC<HomeProps> = () => {
-  const { effectiveTheme } = useTheme();
-  const [Loading, setLoading] = useState(true);
-  const loaderRef = useRef<HTMLDivElement | null>(null);
-  const lenis = useLenis();
+
+const Skills:FC<HomeProps> = (() => {
+const { effectiveTheme } = useTheme();
+   const [Loading, setLoading] = useState(true);
+   const loaderRef = useRef<HTMLDivElement | null>(null);
+   const lenis = useLenis();
 
   const handleLoad = React.useCallback(() => {
     lenis?.scrollTo("top"); // Scroll to the top of the page
@@ -42,7 +43,7 @@ const Skills: FC<HomeProps> = () => {
     handleLoad();
   }, [handleLoad]);
   return (
-    <div className='min-h-dvh'>
+    <div className="min-h-dvh">
       {Loading && (
         <Loader
           ref={loaderRef}
@@ -86,6 +87,6 @@ const Skills: FC<HomeProps> = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Skills;

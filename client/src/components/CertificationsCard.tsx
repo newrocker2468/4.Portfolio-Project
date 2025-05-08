@@ -1,5 +1,5 @@
 import Calender from "@/assets/Calender";
-import "/styles/CertificationsCard.css";
+import "../styles/CertificationsCard.css";
 import { useTheme } from "./useTheme";
 const certifications = [
   {
@@ -9,18 +9,7 @@ const certifications = [
     url: "https://www.udemy.com/certificate/UC-29bdea29-1c68-4d51-9c73-9078f1bc902e",
     description:
       "A comprehensive course covering all aspects of web development.",
-    learned: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "React",
-      "Bootstrap",
-      "Cloudinary",
-      "MapBox",
-    ],
+    learned: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB", "React", "Bootstrap","Cloudinary","MapBox"],
   },
   {
     title: "Introduction to Front-End Development",
@@ -99,7 +88,7 @@ const certifications = [
 //     </a>
 //   </div>
 const CertificationsCard = () => {
-  const { effectiveTheme } = useTheme();
+  const {effectiveTheme} = useTheme();
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 '>
       {certifications.map((certification, index) => (
@@ -148,21 +137,22 @@ const CertificationsCard = () => {
               })}
               <p>{certification.description}</p>
             </div>
+
           </div>
-          <div className='my-2'>
-            <a
-              href={certification.url}
-              className={`${
-                effectiveTheme == "dark"
-                  ? "bg-white text-black"
-                  : "bg-black text-white"
-              } rounded-xl px-2 py-1 text-md mt-3 cursor-pointer hover:bg-gray-200 hover:text-black transition-colors max-w-[8rem]`}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              View Certificate
-            </a>
-          </div>
+            <div className='my-2'>
+              <a
+                href={certification.url}
+                className={`${
+                  effectiveTheme == "dark"
+                    ? "bg-white text-black"
+                    : "bg-black text-white"
+                } rounded-xl px-2 py-1 text-md mt-3 cursor-pointer hover:bg-gray-200 hover:text-black transition-colors max-w-[8rem]`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                View Certificate
+              </a>
+            </div>
         </div>
       ))}
     </div>
