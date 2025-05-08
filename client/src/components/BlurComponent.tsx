@@ -1,5 +1,5 @@
 import { useRef, useEffect, ReactNode } from "react";
-import "../styles/BlurContainer.css"; // Import the CSS for styling
+import "/styles/BlurContainer.css"; // Import the CSS for styling
 
 interface BlurContainerProps {
   className?: string;
