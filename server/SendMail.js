@@ -4,11 +4,11 @@ const sendMail = async (formData) => {
   // Replace with your SMTP service credentials
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  port: 587,
+  port: 465,
   secure: false,
   auth: {
     user: "corenexui9@gmail.com",
-    pass: `${process.env.EMAIL_PASSWORD}`,
+    pass: `${process.env.EMAIL_PASS}`,
   },
 });
 

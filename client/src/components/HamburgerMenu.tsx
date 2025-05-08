@@ -17,7 +17,7 @@ const HamBurgerMenu: FC<HamBurgerMenuProps> = ({
     <>
       <div
         className={`${
-          effectiveTheme == "dark" ? "bg-black" : "bg-white"
+          effectiveTheme == "dark" ? "bg-black bg-opacity-90" : "bg-white"
         } text-white w-full h-screen fixed top-0 right-0 z-50 flex justify-start items-center flex-col transform transition-transform duration-500 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
