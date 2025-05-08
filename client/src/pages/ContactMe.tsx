@@ -14,7 +14,8 @@ interface HomeProps {
   loading?: boolean;
 }
 
-const ContactMe = React.forwardRef<HTMLDivElement, HomeProps>((props, ref) => {
+
+const ContactMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
   const { effectiveTheme } = useTheme();
   const [Loading, setLoading] = useState(true);
   const loaderRef = useRef<HTMLDivElement | null>(null);
