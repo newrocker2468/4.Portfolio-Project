@@ -1,4 +1,4 @@
-import "../styles/NavBar.css";
+import "../styles/Navbar.css";
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Arrow from "../assets/Arrow";
