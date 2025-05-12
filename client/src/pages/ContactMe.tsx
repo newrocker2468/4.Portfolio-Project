@@ -60,7 +60,7 @@ const ContactMe = React.forwardRef<HTMLDivElement, HomeProps>(() => {
     onSubmit: (values) => {
       // Add your form submission logic here
       axios
-        .post("http://localhost:3000/sendmail", values)
+        .post(`${process.env.Server_address}/sendmail`, values)
         .then((res) => {
           if (res.status === 200) {
             alert("Message Sent Successfully");
