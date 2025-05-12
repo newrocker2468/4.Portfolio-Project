@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"     # Use Vite's build command (recommended for Vite projects)
+  publish = "dist"             # Output directory of Vite builds (default is `dist`)
+
+[build.environment]
+  # Instruct Netlify’s secrets scanner to ignore this key name
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SERVER_URL"
+
+[[redirects]]
+  from = "/api/*"                                              # Catch all “/api/…” frontend requests
+  to = "https://portfolio-backend.jaskaran.dev/api/:splat"     # Proxy them to the backend
+  status = 200                                                # Use a rewrite/proxy (keeps client URL)
+  force = true                                                # Always apply this rule, even if a file exists
